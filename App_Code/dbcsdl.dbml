@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dbQLSB" Class="dbcsdlDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-KMNS09Q\SA;Initial Catalog=dbQLSB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="dbQLSBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tbBill" Member="tbBills">
+    <Type Name="tbBill">
+      <Column Name="bill_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="users_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="drinks_id" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="clothes_id" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="shoes_id" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="drinks_quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="clothes_quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="shoes_quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date_create" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="tbUser_tbBill" Member="tbUser" ThisKey="users_id" OtherKey="users_id" Type="tbUser" IsForeignKey="true" />
+      <Association Name="tbClothe_tbBill" Member="tbClothe" ThisKey="clothes_id" OtherKey="clothes_id" Type="tbClothe" IsForeignKey="true" />
+      <Association Name="tbDrink_tbBill" Member="tbDrink" ThisKey="drinks_id" OtherKey="drinks_id" Type="tbDrink" IsForeignKey="true" />
+      <Association Name="tbShoe_tbBill" Member="tbShoe" ThisKey="shoes_id" OtherKey="shoes_id" Type="tbShoe" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbUsers" Member="tbUsers">
+    <Type Name="tbUser">
+      <Column Name="users_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="users_fullname" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="users_phoneNumber" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="users_address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="users_identity" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="users_account" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="users_password" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="group_user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="users_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="tbUser_tbBill" Member="tbBills" ThisKey="users_id" OtherKey="users_id" Type="tbBill" />
+      <Association Name="tbUser_tbTempTransactionAdmin" Member="tbTempTransactionAdmins" ThisKey="users_id" OtherKey="users_id" Type="tbTempTransactionAdmin" />
+      <Association Name="tbUser_tbTempTransactionCustomer" Member="tbTempTransactionCustomers" ThisKey="users_id" OtherKey="users_id" Type="tbTempTransactionCustomer" />
+      <Association Name="tbGroupUser_tbUser" Member="tbGroupUser" ThisKey="group_user_id" OtherKey="group_user_id" Type="tbGroupUser" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbBookTime" Member="tbBookTimes">
+    <Type Name="tbBookTime">
+      <Column Name="book_time_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="book_time_detail" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="tbBookTime_tbPrice" Member="tbPrices" ThisKey="book_time_id" OtherKey="book_time_id" Type="tbPrice" />
+      <Association Name="tbBookTime_tbTempTransactionAdmin" Member="tbTempTransactionAdmins" ThisKey="book_time_id" OtherKey="book_time_id" Type="tbTempTransactionAdmin" />
+      <Association Name="tbBookTime_tbTempTransactionCustomer" Member="tbTempTransactionCustomers" ThisKey="book_time_id" OtherKey="book_time_id" Type="tbTempTransactionCustomer" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbClothes" Member="tbClothes">
+    <Type Name="tbClothe">
+      <Column Name="clothes_id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="clothes_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="clothes_price" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="clothes_size" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Column Name="clothes_color" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="clothes_description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="picture" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbClothe_tbBill" Member="tbBills" ThisKey="clothes_id" OtherKey="clothes_id" Type="tbBill" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbDrinks" Member="tbDrinks">
+    <Type Name="tbDrink">
+      <Column Name="drinks_id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="drinks_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="drinks_price" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="drinks_description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="picture" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbDrink_tbBill" Member="tbBills" ThisKey="drinks_id" OtherKey="drinks_id" Type="tbBill" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbField" Member="tbFields">
+    <Type Name="tbField">
+      <Column Name="field_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="field_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="field_type_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="field_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="tbField_tbTempTransactionAdmin" Member="tbTempTransactionAdmins" ThisKey="field_id" OtherKey="field_id" Type="tbTempTransactionAdmin" />
+      <Association Name="tbField_tbTempTransactionCustomer" Member="tbTempTransactionCustomers" ThisKey="field_id" OtherKey="field_id" Type="tbTempTransactionCustomer" />
+      <Association Name="tbFieldType_tbField" Member="tbFieldType" ThisKey="field_type_id" OtherKey="field_type_id" Type="tbFieldType" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbFieldType" Member="tbFieldTypes">
+    <Type Name="tbFieldType">
+      <Column Name="field_type_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="field_type_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="tbFieldType_tbField" Member="tbFields" ThisKey="field_type_id" OtherKey="field_type_id" Type="tbField" />
+      <Association Name="tbFieldType_tbPrice" Member="tbPrices" ThisKey="field_type_id" OtherKey="field_type_id" Type="tbPrice" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGroupUser" Member="tbGroupUsers">
+    <Type Name="tbGroupUser">
+      <Column Name="group_user_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="group_user_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="group_user_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="tbGroupUser_tbUser" Member="tbUsers" ThisKey="group_user_id" OtherKey="group_user_id" Type="tbUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbPrice" Member="tbPrices">
+    <Type Name="tbPrice">
+      <Column Name="price_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="field_type_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="book_time_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="price" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="tbBookTime_tbPrice" Member="tbBookTime" ThisKey="book_time_id" OtherKey="book_time_id" Type="tbBookTime" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="tbFieldType_tbPrice" Member="tbFieldType" ThisKey="field_type_id" OtherKey="field_type_id" Type="tbFieldType" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbShoes" Member="tbShoes">
+    <Type Name="tbShoe">
+      <Column Name="shoes_id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="shoes_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="shoes_price" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="shoes_size" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="shoes_color" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="shoes_description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="picture" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbShoe_tbBill" Member="tbBills" ThisKey="shoes_id" OtherKey="shoes_id" Type="tbBill" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTempTransactionAdmin" Member="tbTempTransactionAdmins">
+    <Type Name="tbTempTransactionAdmin">
+      <Column Name="temp_transaction_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="field_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="users_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="book_time_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbTempTransactionAdmin_tbTransaction" Member="tbTransactions" ThisKey="temp_transaction_id" OtherKey="temp_transaction_id" Type="tbTransaction" />
+      <Association Name="tbBookTime_tbTempTransactionAdmin" Member="tbBookTime" ThisKey="book_time_id" OtherKey="book_time_id" Type="tbBookTime" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="tbField_tbTempTransactionAdmin" Member="tbField" ThisKey="field_id" OtherKey="field_id" Type="tbField" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="tbUser_tbTempTransactionAdmin" Member="tbUser" ThisKey="users_id" OtherKey="users_id" Type="tbUser" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTempTransactionCustomer" Member="tbTempTransactionCustomers">
+    <Type Name="tbTempTransactionCustomer">
+      <Column Name="temp_transaction_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="field_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="users_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="book_time_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbBookTime_tbTempTransactionCustomer" Member="tbBookTime" ThisKey="book_time_id" OtherKey="book_time_id" Type="tbBookTime" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="tbField_tbTempTransactionCustomer" Member="tbField" ThisKey="field_id" OtherKey="field_id" Type="tbField" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="tbUser_tbTempTransactionCustomer" Member="tbUser" ThisKey="users_id" OtherKey="users_id" Type="tbUser" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTransaction" Member="tbTransactions">
+    <Type Name="tbTransaction">
+      <Column Name="transaction_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="temp_transaction_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="transaction_status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="transaction_datetime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="price" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="tbTempTransactionAdmin_tbTransaction" Member="tbTempTransactionAdmin" ThisKey="temp_transaction_id" OtherKey="temp_transaction_id" Type="tbTempTransactionAdmin" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+</Database>

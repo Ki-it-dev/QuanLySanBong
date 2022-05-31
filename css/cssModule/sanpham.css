@@ -1,0 +1,54 @@
+
+#sanpham {
+    height: 100vh;
+    background-image: url('images/san.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.card{
+    width:200px;
+    height:450px;
+}
+#sanpham img {
+    width: 300px;
+    height: 230px;
+}
+.card-deck {
+    width: 100%;
+    margin-top: 70px;
+}
+
+.h{
+    margin: 10px;
+    width:100px;
+}
+h3{
+    margin-left: 30px;
+}
+.ttcn{
+    width:100%;
+    height: 80%;
+    display: flex;
+}
+.ri{
+    display: flex;
+}
+.bo{
+    height: 20%;
+    
+}.butt{
+    vertical-align: middle;
+    text-align: center;
+    align-items: center;
+}
+.csxn{
+    font-size:35px;
+    border-radius: 20px;
+    
+}
+
+#sanpham h5{
+    color:red;
+    font-style:italic;
+}

@@ -1,0 +1,31 @@
+﻿
+
+.header i {
+    margin-left: 10px;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+}
+
+#menu li {
+    padding-left: 30px;
+    padding-right: 30px;
+    color: white;
+}
+
+.navbar-nav li{
+    font-size:24px;
+    margin-right:20px;
+}
+
+.footer li{
+    margin-right: 20px;
+}
+
+.bg-company-red {
+    background-color: #0000 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+}

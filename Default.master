@@ -1,0 +1,80 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Default.master.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Sân Bóng HG</title>
+    <link href="css/cssModule/style.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/popper.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="header">
+            <nav id="navbar-example2" class="navbar  fixed-top navbar-expand-lg navbar-dark bg-dark  bg-company-red ">
+                <a class="navbar-brand" href="#index">
+                    <img src="images/SanBong/TrangChu/lo.png" width="70" height="70" alt="">
+                </a>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto" id="menu">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#index">Trang chủ<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#san3">Sân</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sanpham">Sản Phẩm</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#lienhe">Liên Hệ</a>
+                        </li>
+                    </ul>
+                    <input class="form-control mr-sm-2" type="search" style="width: 500px;" placeholder="Nhập sân hoặc sản phẩm bất kỳ..." aria-label="search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm Kiếm</button>
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item">
+                            <i class="far fa-user"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Đăng Nhập</a>
+                        </li>
+                        <li class="nav-item">
+                            <i class="far fa-bell"></i>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="footer">
+            <nav class="navbar  fixed-bottom navbar-expand-lg navbar-dark bg-dark  bg-company-red">
+                <ul class="navbar-nav ml-auto" style="color: white;">
+                    <li>
+                        <span class="nav-item">SÂN BÓNG HG |</span>
+                    </li>
+                    <li>
+                        <span class="nav-item">Địa Chỉ: Số 47 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng |</span>
+                    </li>
+                    <li>
+                        <span class="nav-item">SĐT: 0386550100 - 0355666444</span>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+    </form>
+</body>
+</html>
