@@ -57,13 +57,13 @@
 
                                 <!-- Email input -->
                                 <div class="form-outline mb-4">
-                                    <input type="email" id="loginName" class="form-control" />
+                                    <input type="email" id="loginName" runat="server" class="form-control" />
                                     <label class="form-label" for="loginName">Account</label>
                                 </div>
 
                                 <!-- Password input -->
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="loginPassword" class="form-control" />
+                                    <input type="password" id="loginPassword" runat="server" class="form-control" />
                                     <label class="form-label" for="loginPassword">Password</label>
                                 </div>
 
@@ -84,7 +84,7 @@
                                 </div>
 
                                 <!-- Submit button -->
-                                <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+                                <button type="submit" id="btnLogin" runat="server" onserverclick="btnLogin_ServerClick" class="btn btn-primary btn-block mb-4">Sign in</button>
 
                                 <!-- Register buttons -->
                                 <div class="text-center">
@@ -165,7 +165,7 @@
                                 </div>
 
                                 <!-- Submit button -->
-                                <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+                                <button type="submit" id="btnRegister" runat="server" onserverclick="btnRegister_ServerClick" class="btn btn-primary btn-block mb-3">Sign in</button>
                             </div>
                         </div>
                         <!-- Pills content -->
