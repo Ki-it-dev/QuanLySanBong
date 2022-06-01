@@ -647,6 +647,8 @@ public partial class tbUser : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private System.Nullable<bool> _users_status;
 	
+	private string _users_email;
+	
 	private EntitySet<tbBill> _tbBills;
 	
 	private EntitySet<tbTempTransactionAdmin> _tbTempTransactionAdmins;
@@ -677,6 +679,8 @@ public partial class tbUser : INotifyPropertyChanging, INotifyPropertyChanged
     partial void Ongroup_user_idChanged();
     partial void Onusers_statusChanging(System.Nullable<bool> value);
     partial void Onusers_statusChanged();
+    partial void Onusers_emailChanging(string value);
+    partial void Onusers_emailChanged();
     #endregion
 	
 	public tbUser()
@@ -868,6 +872,26 @@ public partial class tbUser : INotifyPropertyChanging, INotifyPropertyChanged
 				this._users_status = value;
 				this.SendPropertyChanged("users_status");
 				this.Onusers_statusChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_email", DbType="NVarChar(50)")]
+	public string users_email
+	{
+		get
+		{
+			return this._users_email;
+		}
+		set
+		{
+			if ((this._users_email != value))
+			{
+				this.Onusers_emailChanging(value);
+				this.SendPropertyChanging();
+				this._users_email = value;
+				this.SendPropertyChanged("users_email");
+				this.Onusers_emailChanged();
 			}
 		}
 	}

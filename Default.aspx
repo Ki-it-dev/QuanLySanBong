@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="TrangChu" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link href="css/cssModule/index.css" rel="stylesheet" type="text/css" />
     <link href="css/cssModule/san.css" rel="stylesheet" type="text/css">
     <link href="css/cssModule/sanpham.css" rel="stylesheet" type="text/css">
@@ -11,7 +11,7 @@
     <link href="css/cssModule/qldsc.css" rel="stylesheet" type="text/css">
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="box">
         <div id="index">
             <div class="khoangcach">
@@ -58,7 +58,7 @@
                                 <!-- Email input -->
                                 <div class="form-outline mb-4">
                                     <input type="email" id="loginName" class="form-control" />
-                                    <label class="form-label" for="loginName">Email or username</label>
+                                    <label class="form-label" for="loginName">Account</label>
                                 </div>
 
                                 <!-- Password input -->
@@ -115,32 +115,44 @@
 
                                 <!-- Name input -->
                                 <div class="form-outline mb-4">
-                                    <input type="text" id="registerName" class="form-control" />
-                                    <label class="form-label" for="registerName">Name</label>
+                                    <input type="text" id="registerName" runat="server" class="form-control" />
+                                    <label class="form-label" for="registerName">Full name</label>
                                 </div>
 
                                 <!-- Username input -->
                                 <div class="form-outline mb-4">
-                                    <input type="text" id="registerUsername" class="form-control" />
-                                    <label class="form-label" for="registerUsername">Username</label>
+                                    <input type="text" id="registerUsername" runat="server" class="form-control" />
+                                    <label class="form-label" for="registerUsername">Account</label>
                                 </div>
 
                                 <!-- Email input -->
                                 <div class="form-outline mb-4">
-                                    <input type="email" id="registerEmail" class="form-control" />
+                                    <input type="email" id="registerEmail" runat="server" class="form-control" />
                                     <label class="form-label" for="registerEmail">Email</label>
                                 </div>
 
                                 <!-- Password input -->
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="registerPassword" class="form-control" />
+                                    <input type="password" id="registerPassword" runat="server" class="form-control" />
                                     <label class="form-label" for="registerPassword">Password</label>
                                 </div>
 
                                 <!-- Repeat Password input -->
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="registerRepeatPassword" class="form-control" />
+                                    <input type="password" id="registerRepeatPassword" runat="server" class="form-control" />
                                     <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+                                </div>
+
+                                <!-- Phone numbers input -->
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="phoneNumbers" runat="server" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                                    <label class="form-label" for="phoneNumbers">Phone numbers</label>
+                                </div>
+
+                                <!-- Phone numbers input -->
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="identity" runat="server" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                                    <label class="form-label" for="identity">Identity</label>
                                 </div>
 
                                 <!-- Checkbox -->
@@ -158,8 +170,6 @@
                         </div>
                         <!-- Pills content -->
                     </div>
-
-
                 </div>
                 <div class="d-flex justify-content-end">
                     <div class="p-2">
@@ -172,7 +182,7 @@
                 </div>
             </div>
         </div>
-        <div id="san3">
+        <%--<div id="san3">
             <div class="khoangcach">
                 <h1>Sân 3</h1>
                 <div class="d-flex">
@@ -263,8 +273,6 @@
                             <img src="images/Right.png" /></a>
                     </div>
                 </div>
-
-
             </div>
         </div>
         <div id="san5">
@@ -922,75 +930,77 @@
         <div id="qldsc">
             <div class="khoangcach">
                 <h1>Quản lý giao dịch</h1>
-                <div style="margin-top:50px;">
-                    <div class="d-flex flex-column">   
+                <div style="margin-top: 50px;">
+                    <div class="d-flex flex-column">
                         <div class="p-2">
                             <table class="table table-dark">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Mã sân</th>
-                                    <th scope="col">Tài khoản</th>
-                                    <th scope="col">Thời gian</th>
-                                    <th scope="col">Giá tiền</th>
-                                    <th scope="col">Ngày đặt</th>
-                                    <th scope="col">Trạng thái</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>3-A</td>
-                                    <td>haubui0812</td>
-                                    <td>08:00-10:00</td>
-                                    <td>100000000</td>
-                                    <td>20/11/2021</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>3-A</td>
-                                    <td>haubui0812</td>
-                                    <td>08:00-10:00</td>
-                                    <td>100000000</td>
-                                    <td>20/11/2021</td>
-                                    <td>Đã xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>3-A</td>
-                                    <td>haubui0812</td>
-                                    <td>08:00-10:00</td>
-                                    <td>100000000</td>
-                                    <td>20/11/2021</td>
-                                    <td>Đã Hủy</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>3-A</td>
-                                    <td>haubui0812</td>
-                                    <td>08:00-10:00</td>
-                                    <td>100000000</td>
-                                    <td>20/11/2021</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>3-A</td>
-                                    <td>haubui0812</td>
-                                    <td>08:00-10:00</td>
-                                    <td>100000000</td>
-                                    <td>20/11/2021</td>
-                                    <td>Đã xác nhận</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Mã sân</th>
+                                        <th scope="col">Tài khoản</th>
+                                        <th scope="col">Thời gian</th>
+                                        <th scope="col">Giá tiền</th>
+                                        <th scope="col">Ngày đặt</th>
+                                        <th scope="col">Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>3-A</td>
+                                        <td>haubui0812</td>
+                                        <td>08:00-10:00</td>
+                                        <td>100000000</td>
+                                        <td>20/11/2021</td>
+                                        <td>Chờ xác nhận</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>3-A</td>
+                                        <td>haubui0812</td>
+                                        <td>08:00-10:00</td>
+                                        <td>100000000</td>
+                                        <td>20/11/2021</td>
+                                        <td>Đã xác nhận</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>3-A</td>
+                                        <td>haubui0812</td>
+                                        <td>08:00-10:00</td>
+                                        <td>100000000</td>
+                                        <td>20/11/2021</td>
+                                        <td>Đã Hủy</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>3-A</td>
+                                        <td>haubui0812</td>
+                                        <td>08:00-10:00</td>
+                                        <td>100000000</td>
+                                        <td>20/11/2021</td>
+                                        <td>Chờ xác nhận</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">5</th>
+                                        <td>3-A</td>
+                                        <td>haubui0812</td>
+                                        <td>08:00-10:00</td>
+                                        <td>100000000</td>
+                                        <td>20/11/2021</td>
+                                        <td>Đã xác nhận</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="p-2"><div class="d-flex flex-row-reverse"><a class="alert alert-warning" style="text-decoration:none" href="#xndsc">Đến trang xác nhận đơn</a></div></div>
+                        <div class="p-2">
+                            <div class="d-flex flex-row-reverse"><a class="alert alert-warning" style="text-decoration: none" href="#xndsc">Đến trang xác nhận đơn</a></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--%>
     </div>
 </asp:Content>
 
