@@ -12,7 +12,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <div class="box">
+    <div class="container-fluid">
         <div id="index">
             <div class="khoangcach">
                 <div class="d-flex justify-content-end">
