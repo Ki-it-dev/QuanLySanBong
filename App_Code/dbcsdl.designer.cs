@@ -71,7 +71,7 @@ public partial class dbcsdlDataContext : System.Data.Linq.DataContext
   #endregion
 	
 	public dbcsdlDataContext() : 
-			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["dbQLSBConnectionString"].ConnectionString, mappingSource)
+			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["dbQLSBConnectionString1"].ConnectionString, mappingSource)
 	{
 		OnCreated();
 	}
@@ -635,6 +635,8 @@ public partial class tbUser : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private string _users_phoneNumber;
 	
+	private string _users_email;
+	
 	private string _users_address;
 	
 	private string _users_identity;
@@ -646,8 +648,6 @@ public partial class tbUser : INotifyPropertyChanging, INotifyPropertyChanged
 	private System.Nullable<int> _group_user_id;
 	
 	private System.Nullable<bool> _users_status;
-	
-	private string _users_email;
 	
 	private EntitySet<tbBill> _tbBills;
 	
@@ -667,6 +667,8 @@ public partial class tbUser : INotifyPropertyChanging, INotifyPropertyChanged
     partial void Onusers_fullnameChanged();
     partial void Onusers_phoneNumberChanging(string value);
     partial void Onusers_phoneNumberChanged();
+    partial void Onusers_emailChanging(string value);
+    partial void Onusers_emailChanged();
     partial void Onusers_addressChanging(string value);
     partial void Onusers_addressChanged();
     partial void Onusers_identityChanging(string value);
@@ -679,8 +681,6 @@ public partial class tbUser : INotifyPropertyChanging, INotifyPropertyChanged
     partial void Ongroup_user_idChanged();
     partial void Onusers_statusChanging(System.Nullable<bool> value);
     partial void Onusers_statusChanged();
-    partial void Onusers_emailChanging(string value);
-    partial void Onusers_emailChanged();
     #endregion
 	
 	public tbUser()
@@ -748,6 +748,26 @@ public partial class tbUser : INotifyPropertyChanging, INotifyPropertyChanged
 				this._users_phoneNumber = value;
 				this.SendPropertyChanged("users_phoneNumber");
 				this.Onusers_phoneNumberChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_email", DbType="NVarChar(50)")]
+	public string users_email
+	{
+		get
+		{
+			return this._users_email;
+		}
+		set
+		{
+			if ((this._users_email != value))
+			{
+				this.Onusers_emailChanging(value);
+				this.SendPropertyChanging();
+				this._users_email = value;
+				this.SendPropertyChanged("users_email");
+				this.Onusers_emailChanged();
 			}
 		}
 	}
@@ -872,26 +892,6 @@ public partial class tbUser : INotifyPropertyChanging, INotifyPropertyChanged
 				this._users_status = value;
 				this.SendPropertyChanged("users_status");
 				this.Onusers_statusChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_email", DbType="NVarChar(50)")]
-	public string users_email
-	{
-		get
-		{
-			return this._users_email;
-		}
-		set
-		{
-			if ((this._users_email != value))
-			{
-				this.Onusers_emailChanging(value);
-				this.SendPropertyChanging();
-				this._users_email = value;
-				this.SendPropertyChanged("users_email");
-				this.Onusers_emailChanged();
 			}
 		}
 	}

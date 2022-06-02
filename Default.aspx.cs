@@ -113,6 +113,7 @@ public partial class TrangChu : System.Web.UI.Page
             string s = ck.Value;
             ck.Value = account;
             Response.Cookies.Add(ck);
+            alert.alert_Success(Page, "Đăng nhập thành công", "");
         }
         else
         {

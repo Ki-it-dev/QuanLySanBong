@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dbQLSB" Class="dbcsdlDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-KMNS09Q\SA;Initial Catalog=dbQLSB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="dbQLSBConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-KMNS09Q;Initial Catalog=dbQLSB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="dbQLSBConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.tbBill" Member="tbBills">
     <Type Name="tbBill">
       <Column Name="bill_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -22,13 +22,13 @@
       <Column Name="users_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="users_fullname" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="users_phoneNumber" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="users_email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="users_address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="users_identity" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
       <Column Name="users_account" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="users_password" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="group_user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="users_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="users_email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="tbUser_tbBill" Member="tbBills" ThisKey="users_id" OtherKey="users_id" Type="tbBill" />
       <Association Name="tbUser_tbTempTransactionAdmin" Member="tbTempTransactionAdmins" ThisKey="users_id" OtherKey="users_id" Type="tbTempTransactionAdmin" />
       <Association Name="tbUser_tbTempTransactionCustomer" Member="tbTempTransactionCustomers" ThisKey="users_id" OtherKey="users_id" Type="tbTempTransactionCustomer" />
