@@ -16,178 +16,170 @@
         <div id="index">
             <div class="khoangcach">
                 <div class="d-flex justify-content-end">
-                    <asp:ScriptManager runat="server" />
-                    <asp:UpdatePanel runat="server">
-                        <ContentTemplate>
-                            <div id="login-form formId">
-                                <!-- Pills navs -->
-                                <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"
-                                            aria-controls="pills-login" aria-selected="true">Login</a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"
-                                            aria-controls="pills-register" aria-selected="false">Register</a>
-                                    </li>
-                                </ul>
-                                <!-- Pills navs -->
+                    <div id="login-form" style="<%=none%>">
+                        <!-- Pills navs -->
+                        <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"
+                                    aria-controls="pills-login" aria-selected="true">Login</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"
+                                    aria-controls="pills-register" aria-selected="false">Register</a>
+                            </li>
+                        </ul>
+                        <!-- Pills navs -->
 
-                                <!-- Pills content -->
-                                <div class="tab-content">
-                                    <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-                                        <div class="text-center mb-3">
-                                            <p>Sign in with:</p>
+                        <!-- Pills content -->
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+                                <div class="text-center mb-3">
+                                    <p>Sign in with:</p>
 
-                                            <button type="button" class="btn btn-link btn-floating mx-1">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </button>
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </button>
 
-                                            <button type="button" class="btn btn-link btn-floating mx-1">
-                                                <i class="fab fa-google"></i>
-                                            </button>
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="fab fa-google"></i>
+                                    </button>
 
-                                            <button type="button" class="btn btn-link btn-floating mx-1">
-                                                <i class="fab fa-twitter"></i>
-                                            </button>
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="fab fa-twitter"></i>
+                                    </button>
 
-                                            <button type="button" class="btn btn-link btn-floating mx-1">
-                                                <i class="fab fa-github"></i>
-                                            </button>
-                                        </div>
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="fab fa-github"></i>
+                                    </button>
+                                </div>
 
-                                        <p class="text-center">or:</p>
+                                <p class="text-center">or:</p>
 
-                                        <!-- Email input -->
-                                        <div class="form-outline mb-4">
-                                            <input type="email" id="loginName" runat="server" class="form-control" />
-                                            <label class="form-label" for="loginName">Account</label>
-                                        </div>
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+                                    <input type="email" id="loginName" runat="server" class="form-control" />
+                                    <label class="form-label" for="loginName">Account</label>
+                                </div>
 
-                                        <!-- Password input -->
-                                        <div class="form-outline mb-4">
-                                            <input type="password" id="loginPassword" runat="server" class="form-control" />
-                                            <label class="form-label" for="loginPassword">Password</label>
-                                        </div>
+                                <!-- Password input -->
+                                <div class="form-outline mb-4">
+                                    <input type="password" id="loginPassword" runat="server" class="form-control" />
+                                    <label class="form-label" for="loginPassword">Password</label>
+                                </div>
 
-                                        <!-- 2 column grid layout -->
-                                        <div class="row mb-4">
-                                            <div class="col-md-6 d-flex justify-content-center">
-                                                <!-- Checkbox -->
-                                                <div class="form-check mb-3 mb-md-0">
-                                                    <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
-                                                    <label class="form-check-label" for="loginCheck">Remember me </label>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 d-flex justify-content-center">
-                                                <!-- Simple link -->
-                                                <a href="#!">Forgot password?</a>
-                                            </div>
-                                        </div>
-
-                                        <!-- Submit button -->
-                                        <button type="submit" id="btnLogin" runat="server" onserverclick="btnLogin_ServerClick" class="btn btn-primary btn-block mb-4">Sign in</button>
-
-                                        <!-- Register buttons -->
-                                        <div class="text-center">
-                                            <p>Not a member? <a href="#!">Register</a></p>
+                                <!-- 2 column grid layout -->
+                                <div class="row mb-4">
+                                    <div class="col-md-6 d-flex justify-content-center">
+                                        <!-- Checkbox -->
+                                        <div class="form-check mb-3 mb-md-0">
+                                            <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+                                            <label class="form-check-label" for="loginCheck">Remember me </label>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-                                        <div class="text-center mb-3">
-                                            <p>Sign up with:</p>
-                                            <button type="button" class="btn btn-link btn-floating mx-1">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </button>
 
-                                            <button type="button" class="btn btn-link btn-floating mx-1">
-                                                <i class="fab fa-google"></i>
-                                            </button>
-
-                                            <button type="button" class="btn btn-link btn-floating mx-1">
-                                                <i class="fab fa-twitter"></i>
-                                            </button>
-
-                                            <button type="button" class="btn btn-link btn-floating mx-1">
-                                                <i class="fab fa-github"></i>
-                                            </button>
-                                        </div>
-
-                                        <p class="text-center">or:</p>
-
-                                        <!-- Name input -->
-                                        <div class="form-outline mb-4">
-                                            <input type="text" id="registerName" runat="server" class="form-control" />
-                                            <label class="form-label" for="registerName">Full name</label>
-                                        </div>
-
-                                        <!-- Username input -->
-                                        <div class="form-outline mb-4">
-                                            <input type="text" id="registerUsername" runat="server" class="form-control" />
-                                            <label class="form-label" for="registerUsername">Account</label>
-                                        </div>
-
-                                        <!-- Email input -->
-                                        <div class="form-outline mb-4">
-                                            <input type="email" id="registerEmail" runat="server" class="form-control" />
-                                            <label class="form-label" for="registerEmail">Email</label>
-                                        </div>
-
-                                        <!-- Password input -->
-                                        <div class="form-outline mb-4">
-                                            <input type="password" id="registerPassword" runat="server" class="form-control" />
-                                            <label class="form-label" for="registerPassword">Password</label>
-                                        </div>
-
-                                        <!-- Repeat Password input -->
-                                        <div class="form-outline mb-4">
-                                            <input type="password" id="registerRepeatPassword" runat="server" class="form-control" />
-                                            <label class="form-label" for="registerRepeatPassword">Repeat password</label>
-                                        </div>
-
-                                        <!-- Phone numbers input -->
-                                        <div class="form-outline mb-4">
-                                            <input type="text" id="phoneNumbers" runat="server" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
-                                            <label class="form-label" for="phoneNumbers">Phone numbers</label>
-                                        </div>
-
-                                        <!-- Phone numbers input -->
-                                        <div class="form-outline mb-4">
-                                            <input type="text" id="identity" runat="server" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
-                                            <label class="form-label" for="identity">Identity</label>
-                                        </div>
-
-                                        <!-- Checkbox -->
-                                        <div class="form-check d-flex justify-content-center mb-4">
-                                            <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
-                                                aria-describedby="registerCheckHelpText" />
-                                            <label class="form-check-label" for="registerCheck">
-                                                I have read and agree to the terms
-                                            </label>
-                                        </div>
-
-                                        <!-- Submit button -->
-                                        <button type="submit" id="btnRegister" runat="server" onserverclick="btnRegister_ServerClick" class="btn btn-primary btn-block mb-3">Sign in</button>
+                                    <div class="col-md-6 d-flex justify-content-center">
+                                        <!-- Simple link -->
+                                        <a href="#!">Forgot password?</a>
                                     </div>
                                 </div>
-                                <!-- Pills content -->
+
+                                <!-- Submit button -->
+                                <button type="submit" id="btnLogin" runat="server" onserverclick="btnLogin_ServerClick" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+                                <!-- Register buttons -->
+                                <div class="text-center">
+                                    <p>Not a member? <a href="#!">Register</a></p>
+                                </div>
                             </div>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
+                            <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+                                <div class="text-center mb-3">
+                                    <p>Sign up with:</p>
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </button>
+
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="fab fa-google"></i>
+                                    </button>
+
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="fab fa-twitter"></i>
+                                    </button>
+
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="fab fa-github"></i>
+                                    </button>
+                                </div>
+
+                                <p class="text-center">or:</p>
+
+                                <!-- Name input -->
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="registerName" runat="server" class="form-control" />
+                                    <label class="form-label" for="registerName">Full name</label>
+                                </div>
+
+                                <!-- Username input -->
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="registerUsername" runat="server" class="form-control" />
+                                    <label class="form-label" for="registerUsername">Account</label>
+                                </div>
+
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+                                    <input type="email" id="registerEmail" runat="server" class="form-control" />
+                                    <label class="form-label" for="registerEmail">Email</label>
+                                </div>
+
+                                <!-- Password input -->
+                                <div class="form-outline mb-4">
+                                    <input type="password" id="registerPassword" runat="server" class="form-control" />
+                                    <label class="form-label" for="registerPassword">Password</label>
+                                </div>
+
+                                <!-- Repeat Password input -->
+                                <div class="form-outline mb-4">
+                                    <input type="password" id="registerRepeatPassword" runat="server" class="form-control" />
+                                    <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+                                </div>
+
+                                <!-- Phone numbers input -->
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="phoneNumbers" runat="server" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                                    <label class="form-label" for="phoneNumbers">Phone numbers</label>
+                                </div>
+
+                                <!-- Phone numbers input -->
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="identity" runat="server" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                                    <label class="form-label" for="identity">Identity</label>
+                                </div>
+
+                                <!-- Checkbox -->
+                                <div class="form-check d-flex justify-content-center mb-4">
+                                    <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
+                                        aria-describedby="registerCheckHelpText" />
+                                    <label class="form-check-label" for="registerCheck">
+                                        I have read and agree to the terms
+                                    </label>
+                                </div>
+
+                                <!-- Submit button -->
+                                <button type="submit" id="btnRegister" runat="server" onserverclick="btnRegister_ServerClick" class="btn btn-primary btn-block mb-3">Sign in</button>
+                            </div>
+                        </div>
+                        <!-- Pills content -->
+                    </div>
                 </div>
                 <div class="d-flex justify-content-end">
                     <div class="p-2">
-                        <a href="#san">
-                            <button id="datngay">
-                                ĐẶT NGAY
-                            </button>
+                        <a href="#san3" style="padding: 20px;">ĐẶT NGAY
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-        <%--<div id="san3">
+        <div id="san3">
             <div class="khoangcach">
                 <h1>Sân 3</h1>
                 <div class="d-flex">
@@ -470,7 +462,7 @@
 
             </div>
         </div>
-        <div id="sanpham">
+        <%--<div id="sanpham">
             <div class="khoangcach">
                 <h1>Sản Phẩm</h1>
                 <div class="dropdown" style="margin-top: 30px;">
@@ -1007,5 +999,8 @@
             </div>
         </div>--%>
     </div>
+
+
+
 </asp:Content>
 

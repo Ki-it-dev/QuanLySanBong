@@ -26,13 +26,19 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+
+    <style>
+        body,html{
+            scroll-behavior:smooth;
+        }
+    </style>
+
     <form id="form1" runat="server">
         <div class="header">
             <nav id="navbar-example2" class="navbar  fixed-top navbar-expand-lg navbar-dark bg-dark  bg-company-red ">
                 <a class="navbar-brand" href="#index">
                     <img src="images/SanBong/TrangChu/lo.png" width="70" height="70" alt="">
                 </a>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto" id="menu">
                         <li class="nav-item active">
@@ -56,7 +62,7 @@
                             <i class="far fa-user"></i>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Đăng Nhập</a>
+                            <a class="nav-link" href="#" id="txtUserName" runat="server">Đăng Nhập</a>
                         </li>
                         <li class="nav-item">
                             <i class="far fa-bell"></i>

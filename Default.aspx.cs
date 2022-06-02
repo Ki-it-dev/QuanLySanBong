@@ -9,13 +9,21 @@ public partial class TrangChu : System.Web.UI.Page
 {
     dbcsdlDataContext db = new dbcsdlDataContext();
     cls_Alert alert = new cls_Alert();
+
+    protected string none;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            if (Request.Cookies["User"] != null)
+            if (Request.Cookies["UserName"] != null)
             {
                 loginName.Value = Request.Cookies["UserName"].Value;
+                none = "display:none;";
+            }
+            else
+            {
+                none = "display:block;";
             }
         }
     }
