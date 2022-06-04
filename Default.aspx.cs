@@ -106,7 +106,6 @@ public partial class TrangChu : System.Web.UI.Page
 
         setNull();
     }
-
     protected void btnLogin_ServerClick(object sender, EventArgs e)
     {
         string pass = loginPassword.Value;
@@ -130,7 +129,6 @@ public partial class TrangChu : System.Web.UI.Page
             ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "AlertBox", "swal('Sai tên đăng nhập / mật khẩu!', '','warning')", true);
         }
     }
-
     protected void loadData()
     {
         var getData = (from l in db.tbFieldTypes
@@ -143,10 +141,6 @@ public partial class TrangChu : System.Web.UI.Page
                        });
 
         var getBookTime = (from bt in db.tbBookTimes select bt);
-
-        //txtTimes.Value = string.Join(",", getBookTime.Select(x => x.book_time_detail));
-        //txtIdTimes.Value = string.Join(",", getBookTime.Select(x => x.book_time_id));
-        //txtIdSans.Value = string.Join(",", getData.Select(x => x.field_id));
 
         rpDanhSachSan.DataSource = getData;
         rpDanhSachSan.DataBind();
@@ -191,8 +185,6 @@ public partial class TrangChu : System.Web.UI.Page
         rpDoUong.DataSource = getDoUong;
         rpDoUong.DataBind();
     }
-
-
     protected void btnXemTrangThaiSan_ServerClick(object sender, EventArgs e)
     {
         string _idSan = txtIdSan.Value;
