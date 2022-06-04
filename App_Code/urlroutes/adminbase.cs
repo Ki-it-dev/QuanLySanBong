@@ -17,7 +17,6 @@ public class adminbase
     public List<string> UrlRoutes()
     {
         List<string> list = new List<string>();
-        list.Add("adminhome|admin-home|~/Admin_Default.aspx");
         return list;
     }
 }

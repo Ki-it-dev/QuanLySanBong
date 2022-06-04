@@ -18,7 +18,7 @@
                 <div class="d-flex justify-content-end">
                     <div id="login-form" style="<%=none%>">
                         <!-- Pills navs -->
-                        <ul class="nav nav-pills nav-justified mb-3" id="ex1" rrpQuanAoole="tablist">
+                        <ul class="nav nav-pills nav-justified mb-3" id="ex1" rrpquanaoole="tablist">
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"
                                     aria-controls="pills-login" aria-selected="true">Login</a>
@@ -57,7 +57,7 @@
 
                                 <!-- Email input -->
                                 <div class="form-outline mb-4">
-                                    <input type="email" id="loginName" runat="server" class="form-control" />
+                                    <input type="text" id="loginName" runat="server" class="form-control" />
                                     <label class="form-label" for="loginName">Account</label>
                                 </div>
 
@@ -193,7 +193,8 @@
                                         <asp:Repeater runat="server" ID="rpKhungGio">
                                             <ItemTemplate>
                                                 <div class="col-6">
-                                                    <a class="btn btn-primary cursor-poiter" style="min-width: 120px;" id="btnSan_<%#Eval("book_time_id") %>_<%#Eval("field_id") %>" onclick="btnTimes('<%#Eval("book_time_id") %>','<%#Eval("field_id") %>')"><%#Eval("book_time_detail") %></a>
+                                                    <a href="#" class="btn btn-primary cursor-poiter" style="min-width: 120px;" id="btnSan_<%#Eval("book_time_id") %>_<%#Eval("field_id") %>" 
+                                                        onclick="btnTimes('<%#Eval("book_time_id") %>','<%#Eval("field_id") %>')"><%#Eval("book_time_detail") %></a>
                                                 </div>
                                             </ItemTemplate>
                                         </asp:Repeater>
@@ -226,14 +227,22 @@
             <div class="khoangcach">
                 <h1>Sản Phẩm</h1>
                 <div class="dropdown" style="margin-top: 30px;">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%--<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Tất cả sản phẩm
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Nước giải khát</a>
                         <a class="dropdown-item" href="#">Áo quần</a>
                         <a class="dropdown-item" href="#">Giày dép</a>
-                    </div>
+                    </div>--%>
+
+                    <asp:DropDownList ID="ddlSanPham" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSanPham_SelectedIndexChanged">
+                        <asp:ListItem>Tất cả sản phẩm</asp:ListItem>
+                        <asp:ListItem>Nước giải khát</asp:ListItem>
+                        <asp:ListItem>Áo quần</asp:ListItem>
+                        <asp:ListItem>Giày dép</asp:ListItem>
+                    </asp:DropDownList>
+
                 </div>
                 <div class="card-deck">
                     <div class="container-fluid">
@@ -301,7 +310,6 @@
                 </div>
             </div>
         </div>
-
         <%--<div id="san3">
             <div class="khoangcach">
                 <h1>Sân 3</h1>
@@ -1124,10 +1132,10 @@
     </div>
 
     <style>
-        .sanDaDat{
-            background:red;
-            color:#fff;
-            font-weight:600;
+        .sanDaDat {
+            background: red;
+            color: #fff;
+            font-weight: 600;
         }
     </style>
 
@@ -1150,13 +1158,12 @@
         $(document).ready(function () {
             for (var i = 0; i < _idSanDaDat.length; i++) {
                 var getElements = document.querySelectorAll("#btnSan_" + _idTimeDaDat[i] + "_" + _idSanDaDat[i]);
-                console.log(getElements)
+                //console.log(getElements)
                 getElements.forEach(function (element) {
                     element.classList.add('sanDaDat');
                 });
             }
         })
-
     </script>
 
 </asp:Content>

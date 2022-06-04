@@ -18,17 +18,36 @@ public partial class TrangChu : System.Web.UI.Page
         {
             if (Request.Cookies["UserName"] != null)
             {
+                //Da dang nhap
                 loginName.Value = Request.Cookies["UserName"].Value;
+                //An Form login
                 none = "display:none;";
-                txtDateTImeNow = DateTime.Now.ToString();
-                loadData();
             }
             else
             {
                 none = "display:block;";
             }
+            ddlSanPhamData();
             loadData();
         }
+        txtDateTImeNow = DateTime.Now.ToString();
+    }
+    protected void ddlSanPhamData()
+    {
+        //Danh sach san pham
+        var getDoUong = from du in db.tbDrinks select du;
+        var getQuanAo = from qa in db.tbClothes select qa;
+        var getGiay = from g in db.tbShoes select g;
+
+        //Danh sach do uong
+        rpDoUong.DataSource = getDoUong;
+        rpDoUong.DataBind();
+        //Danh sach ao quan
+        rpQuanAo.DataSource = getQuanAo;
+        rpQuanAo.DataBind();
+        //Danh sach giay
+        rpGiay.DataSource = getGiay;
+        rpGiay.DataBind();
     }
     protected void setNull()
     {
@@ -121,7 +140,8 @@ public partial class TrangChu : System.Web.UI.Page
             string s = ck.Value;
             ck.Value = account;
             Response.Cookies.Add(ck);
-            alert.alert_Success(Page, "Đăng nhập thành công", "");
+            //alert.alert_Success(Page, "Đăng nhập thành công", "");
+            Response.Redirect("/trang-chu");
         }
         else
         {
@@ -130,6 +150,7 @@ public partial class TrangChu : System.Web.UI.Page
     }
     protected void loadData()
     {
+        //Danh sach san
         var getData = (from l in db.tbFieldTypes
                        join ls in db.tbFields on l.field_type_id equals ls.field_type_id
                        select new
@@ -143,7 +164,7 @@ public partial class TrangChu : System.Web.UI.Page
 
         rpDanhSachSan.DataSource = getData;
         rpDanhSachSan.DataBind();
-
+        //Khach da dan san
         var getTimeBook = (from p in db.tbPrices
                            join bt in db.tbBookTimes on p.book_time_id equals bt.book_time_id
                            join s in db.tbFields on p.field_type_id equals s.field_type_id
@@ -171,18 +192,6 @@ public partial class TrangChu : System.Web.UI.Page
         //    btnRegister.Visible = true;
         //    btnLoggout.Visible = false;
         //}
-
-        var getQuanAo = from qa in db.tbClothes select qa;
-        rpQuanAo.DataSource = getQuanAo;
-        rpQuanAo.DataBind();
-
-        var getGiay = from g in db.tbShoes select g;
-        rpGiay.DataSource = getGiay;
-        rpGiay.DataBind();
-
-        var getDoUong = from du in db.tbDrinks select du;
-        rpDoUong.DataSource = getDoUong;
-        rpDoUong.DataBind();
     }
     protected void btnXemTrangThaiSan_ServerClick(object sender, EventArgs e)
     {
@@ -221,7 +230,6 @@ public partial class TrangChu : System.Web.UI.Page
             alert.alert_Warning(Page, "Sân trống", "");
         }
     }
-
     protected void rpDanhSachSan_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
         Repeater rpKhungGio = e.Item.FindControl("rpKhungGio") as Repeater;
@@ -236,14 +244,12 @@ public partial class TrangChu : System.Web.UI.Page
         rpKhungGio.DataSource = getBookTime;
         rpKhungGio.DataBind();
     }
-
     //protected void btnLoggout_ServerClick(object sender, EventArgs e)
     //{
     //    Session.Clear();
     //    Response.Cookies["User"].Expires = DateTime.Now.AddDays(-1);
     //    Response.Redirect("/dang-nhap");
     //}
-
     protected void btnDatSan_ServerClick(object sender, EventArgs e)
     {
         var getUser = (from u in db.tbUsers where Request.Cookies["UserName"].Value == u.users_account select u).FirstOrDefault();
@@ -252,6 +258,61 @@ public partial class TrangChu : System.Web.UI.Page
         tbTempTransactionCustomer insertUser = new tbTempTransactionCustomer();
         tbTempTransactionAdmin insertAdmin = new tbTempTransactionAdmin();
 
-        insertUser.field_id = Convert.ToInt32(txtIdSanDat.Value);
+        //insertUser.field_id = Convert.ToInt32(txtIdSanDat.Value);
+    }
+    protected void ddlSanPham_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        var getDoUong = from du in db.tbDrinks select du;
+        var getQuanAo = from qa in db.tbClothes select qa;
+        var getGiay = from g in db.tbShoes select g;
+        //Dropdown list san pham
+        if (ddlSanPham.SelectedItem.Text == "Nước giải khát")
+        {
+            //Danh sach do uong
+            rpDoUong.DataSource = getDoUong;
+            rpDoUong.DataBind();
+            //Danh sach ao quan
+            rpQuanAo.DataSource = null;
+            rpQuanAo.DataBind();
+            //Danh sach giay
+            rpGiay.DataSource = null;
+            rpGiay.DataBind();
+        }
+        if (ddlSanPham.SelectedItem.Text == "Áo quần")
+        {
+            //Danh sach ao quan
+            rpQuanAo.DataSource = getQuanAo;
+            rpQuanAo.DataBind();
+            //Danh sach do uong
+            rpDoUong.DataSource = null;
+            rpDoUong.DataBind();
+            //Danh sach giay
+            rpGiay.DataSource = null;
+            rpGiay.DataBind();
+        }
+        if (ddlSanPham.SelectedItem.Text == "Giày dép")
+        {
+            //Danh sach giay
+            rpGiay.DataSource = getGiay;
+            rpGiay.DataBind();
+            //Danh sach do uong
+            rpDoUong.DataSource = null;
+            rpDoUong.DataBind();
+            //Danh sach ao quan
+            rpQuanAo.DataSource = null;
+            rpQuanAo.DataBind();
+        }
+        if(ddlSanPham.SelectedItem.Text == "Tất cả sản phẩm")
+        {
+            //Danh sach do uong
+            rpDoUong.DataSource = getDoUong;
+            rpDoUong.DataBind();
+            //Danh sach ao quan
+            rpQuanAo.DataSource = getQuanAo;
+            rpQuanAo.DataBind();
+            //Danh sach giay
+            rpGiay.DataSource = getGiay;
+            rpGiay.DataBind();  
+        }
     }
 }
