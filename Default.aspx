@@ -1123,6 +1123,14 @@
         </div>--%>
     </div>
 
+    <style>
+        .sanDaDat{
+            background:red;
+            color:#fff;
+            font-weight:600;
+        }
+    </style>
+
     <script>
 
         var _idSanDaDat = document.getElementById("<%=txtIdSanDaDat.ClientID%>").value.split(',')
@@ -1142,7 +1150,7 @@
         $(document).ready(function () {
             for (var i = 0; i < _idSanDaDat.length; i++) {
                 var getElements = document.querySelectorAll("#btnSan_" + _idTimeDaDat[i] + "_" + _idSanDaDat[i]);
-                //console.log(getElements)
+                console.log(getElements)
                 getElements.forEach(function (element) {
                     element.classList.add('sanDaDat');
                 });

@@ -27,6 +27,7 @@ public partial class TrangChu : System.Web.UI.Page
             {
                 none = "display:block;";
             }
+            loadData();
         }
     }
     protected void setNull()
@@ -103,8 +104,6 @@ public partial class TrangChu : System.Web.UI.Page
         db.tbUsers.InsertOnSubmit(insert);
         db.SubmitChanges();
         alert.alert_Success(Page, "Đăng ký thành công", "");
-
-        setNull();
     }
     protected void btnLogin_ServerClick(object sender, EventArgs e)
     {
@@ -153,7 +152,7 @@ public partial class TrangChu : System.Web.UI.Page
                            where st.transaction_status == 1
                            select new
                            {
-                               bt.book_time_id,
+                               tta.book_time_id,
                                tta.field_id,
                            });
 
@@ -196,7 +195,7 @@ public partial class TrangChu : System.Web.UI.Page
                        join tta in db.tbTempTransactionAdmins on s.field_id equals tta.field_id
                        where
                        tta.field_id == Convert.ToInt32(txtIdSan.Value)
-                       && bt.book_time_id == Convert.ToInt32(txtIdGio.Value)
+                       && tta.book_time_id == Convert.ToInt32(txtIdGio.Value)
                        //&& s.field_status == true
                        select new
                        {
