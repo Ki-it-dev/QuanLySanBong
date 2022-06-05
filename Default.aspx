@@ -9,6 +9,9 @@
     <link href="css/cssModule/qlttcn.css" rel="stylesheet" type="text/css">
     <link href="css/cssModule/xndsc.css" rel="stylesheet" type="text/css">
     <link href="css/cssModule/qldsc.css" rel="stylesheet" type="text/css">
+    <link href="css/mdb.min.css" rel="stylesheet" />
+    <script src="js/mdb.min.js"></script>
+    <script src="admin_js/sweetalert.min.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -200,7 +203,7 @@
                                         </asp:Repeater>
                                     </div>
                                     <p class="card-text" id="txtStatus_<%#Eval("field_id") %>"></p>
-                                    <a href="#" class="btn btn-primary mt-2" onclick="btnDatSan(<%#Eval("field_id") %>)" id="<%#Eval("field_id") %>">Đặt sân</a>
+                                    <%--<a href="#" class="btn btn-primary mt-2" onclick="btnDatSan(<%#Eval("field_id") %>)" id="<%#Eval("field_id") %>">Đặt sân</a>--%>
                                 </div>
                             </div>
                         </div>
@@ -220,7 +223,7 @@
             <input type="text" id="txtIdTimeDaDat" runat="server" name="name" />
 
             <input type="text" id="txtIdSanDat" runat="server" />
-            <a href="#" id="btnDatSan" runat="server" onserverclick="btnDatSan_ServerClick"></a>
+            <%--<a href="#" id="btnDatSan" runat="server" onserverclick="btnDatSan_ServerClick"></a>--%>
         </div>
 
         <div id="sanpham">
@@ -310,6 +313,9 @@
                 </div>
             </div>
         </div>
+
+        
+
         <%--<div id="san3">
             <div class="khoangcach">
                 <h1>Sân 3</h1>
@@ -1150,10 +1156,10 @@
             document.getElementById("<%=btnXemTrangThaiSan.ClientID%>").click();
         }
 
-        function btnDatSan(idSan) {
+        <%--function btnDatSan(idSan) {
             document.getElementById("<%=txtIdSanDat.ClientID%>").value = idSan;
             document.getElementById("<%=btnDatSan.ClientID%>").click();
-        }
+        }--%>
 
         $(document).ready(function () {
             for (var i = 0; i < _idSanDaDat.length; i++) {

@@ -223,11 +223,20 @@ public partial class TrangChu : System.Web.UI.Page
 
         if (getData.Count() > 0)
         {
-            alert.alert_Warning(Page, "Sân " + getSan.First().field_name + " vào lúc " + getData.First().book_time_detail + " đã được đặt", "");
+            //alert.alert_Warning(Page, "Sân " + getSan.First().field_name + " vào lúc " + getData.First().book_time_detail + " đã được đặt", "");
         }
         else
         {
-            alert.alert_Warning(Page, "Sân trống", "");
+            if(Request.Cookies["UserName"] == null)
+            {
+                alert.alert_Warning(Page, "Bạn phải đăng nhập để được đặt sân", "");
+            }
+            else
+            {
+                Context.Items["_idSan"] = _idSan;
+                Context.Items["_idGio"] = _idGio;
+                Server.Transfer("web_module/module_XacNhanDatSan.aspx");
+            }
         }
     }
     protected void rpDanhSachSan_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -250,16 +259,6 @@ public partial class TrangChu : System.Web.UI.Page
     //    Response.Cookies["User"].Expires = DateTime.Now.AddDays(-1);
     //    Response.Redirect("/dang-nhap");
     //}
-    protected void btnDatSan_ServerClick(object sender, EventArgs e)
-    {
-        var getUser = (from u in db.tbUsers where Request.Cookies["UserName"].Value == u.users_account select u).FirstOrDefault();
-        var getTypeFieldId = (from f in db.tbFields where f.field_id == Convert.ToInt32(txtIdSanDat.Value) select f).FirstOrDefault();
-
-        tbTempTransactionCustomer insertUser = new tbTempTransactionCustomer();
-        tbTempTransactionAdmin insertAdmin = new tbTempTransactionAdmin();
-
-        //insertUser.field_id = Convert.ToInt32(txtIdSanDat.Value);
-    }
     protected void ddlSanPham_SelectedIndexChanged(object sender, EventArgs e)
     {
         var getDoUong = from du in db.tbDrinks select du;
