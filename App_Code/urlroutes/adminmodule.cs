@@ -18,7 +18,10 @@ public class adminmodule
     public List<string> UrlRoutes()
     {
         List<string> list = new List<string>();
-       
+
+        list.Add("webQuanLyDatSanChung|quan-ly-dat-san-chung|~/admin_page/employee_page/module_QuanLyDatSanChung.aspx");
+        list.Add("webXacNhanDatSanChung|xac-nhan-dat-san-chung|~/admin_page/employee_page/module_XacNhanDatSanChung.aspx");
+
         return list;
     }
 }

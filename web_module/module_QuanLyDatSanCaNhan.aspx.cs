@@ -43,12 +43,12 @@ public partial class web_module_module_QuanLyDatSanCaNhan : System.Web.UI.Page
                            f.field_id,
                            bt.book_time_id,
 
-                           daXacNhan = db.tbTransactions.Any(x => x.transaction_status == 1) ? "display:block" : "display:none",
+                           daXacNhan = t.transaction_status == 1 ? "display:block" : "display:none",
 
-                           choXacNhan = db.tbTransactions.Any(x => x.transaction_status == 0) ? "display:block" : "display:none",
-                           huy = db.tbTransactions.Any(x => x.transaction_status == 0) ? "display:block" : "display:none",
+                           choXacNhan = t.transaction_status == 0 ? "display:block" : "display:none",
+                           huy = t.transaction_status == 0 ? "display:block" : "display:none",
 
-                           daHuy = db.tbTransactions.Any(x => x.transaction_status == -1) ? "display:block" : "display:none",
+                           daHuy = t.transaction_status == -1 ? "display:block" : "display:none",
                        });
 
         rpDanhSachDatSan.DataSource = getData;

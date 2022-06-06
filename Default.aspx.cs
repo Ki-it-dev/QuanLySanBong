@@ -256,12 +256,6 @@ public partial class TrangChu : System.Web.UI.Page
         rpKhungGio.DataSource = getBookTime;
         rpKhungGio.DataBind();
     }
-    //protected void btnLoggout_ServerClick(object sender, EventArgs e)
-    //{
-    //    Session.Clear();
-    //    Response.Cookies["User"].Expires = DateTime.Now.AddDays(-1);
-    //    Response.Redirect("/dang-nhap");
-    //}
     protected void ddlSanPham_SelectedIndexChanged(object sender, EventArgs e)
     {
         var getDoUong = from du in db.tbDrinks select du;
