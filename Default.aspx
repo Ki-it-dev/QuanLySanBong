@@ -10,7 +10,7 @@
     <link href="css/cssModule/xndsc.css" rel="stylesheet" type="text/css">
     <link href="css/cssModule/qldsc.css" rel="stylesheet" type="text/css">
     <link href="css/mdb.min.css" rel="stylesheet" />
-    <script src="js/mdb.min.js"></script>
+    <script src="../js/mdb.min.js"></script>
     <script src="admin_js/sweetalert.min.js"></script>
 </asp:Content>
 
@@ -70,10 +70,9 @@
                                     <label class="form-label" for="loginPassword">Password</label>
                                 </div>
 
-                                <!-- 2 column grid layout -->
+                                <!-- 2 column grid layout 
                                 <div class="row mb-4">
                                     <div class="col-md-6 d-flex justify-content-center">
-                                        <!-- Checkbox -->
                                         <div class="form-check mb-3 mb-md-0">
                                             <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
                                             <label class="form-check-label" for="loginCheck">Remember me </label>
@@ -81,18 +80,17 @@
                                     </div>
 
                                     <div class="col-md-6 d-flex justify-content-center">
-                                        <!-- Simple link -->
                                         <a href="#!">Forgot password?</a>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <!-- Submit button -->
                                 <button type="submit" id="btnLogin" runat="server" onserverclick="btnLogin_ServerClick" class="btn btn-primary btn-block mb-4">Sign in</button>
 
-                                <!-- Register buttons -->
+                                <!-- Register buttons 
                                 <div class="text-center">
                                     <p>Not a member? <a href="#!">Register</a></p>
-                                </div>
+                                </div>-->
                             </div>
                             <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
                                 <div class="text-center mb-3">
@@ -115,51 +113,59 @@
                                 </div>
 
                                 <p class="text-center">or:</p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- Name input -->
+                                        <div class="form-outline mb-3">
+                                            <input type="text" id="registerName" runat="server" class="form-control" />
+                                            <label class="form-label" for="registerName">Full name</label>
+                                        </div>
+                                        <!-- Email input -->
+                                        <div class="form-outline mb-3">
+                                            <input type="email" id="registerEmail" runat="server" class="form-control" />
+                                            <label class="form-label" for="registerEmail">Email</label>
+                                        </div>
 
-                                <!-- Name input -->
-                                <div class="form-outline mb-4">
-                                    <input type="text" id="registerName" runat="server" class="form-control" />
-                                    <label class="form-label" for="registerName">Full name</label>
+
+                                        <!-- Password input -->
+                                        <div class="form-outline mb-3">
+                                            <input type="password" id="registerPassword" runat="server" class="form-control" />
+                                            <label class="form-label" for="registerPassword">Password</label>
+                                        </div>
+                                        <!-- Phone numbers input -->
+                                        <div class="form-outline mb-3">
+                                            <input type="text" id="phoneNumbers" runat="server" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                                            <label class="form-label" for="phoneNumbers">Phone</label>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <!-- Identity input -->
+                                        <div class="form-outline mb-3">
+                                            <input type="text" id="identity" runat="server" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                                            <label class="form-label" for="identity">Identity</label>
+                                        </div>
+
+                                        <!-- Username input -->
+                                        <div class="form-outline mb-3">
+                                            <input type="text" id="registerUsername" runat="server" class="form-control" />
+                                            <label class="form-label" for="registerUsername">Account</label>
+                                        </div>
+
+
+                                        <!-- Repeat Password input -->
+                                        <div class="form-outline mb-2">
+                                            <input type="password" id="registerRepeatPassword" runat="server" class="form-control" />
+                                            <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+                                        </div>
+                                    </div>
+
                                 </div>
 
-                                <!-- Username input -->
-                                <div class="form-outline mb-4">
-                                    <input type="text" id="registerUsername" runat="server" class="form-control" />
-                                    <label class="form-label" for="registerUsername">Account</label>
-                                </div>
-
-                                <!-- Email input -->
-                                <div class="form-outline mb-4">
-                                    <input type="email" id="registerEmail" runat="server" class="form-control" />
-                                    <label class="form-label" for="registerEmail">Email</label>
-                                </div>
-
-                                <!-- Password input -->
-                                <div class="form-outline mb-4">
-                                    <input type="password" id="registerPassword" runat="server" class="form-control" />
-                                    <label class="form-label" for="registerPassword">Password</label>
-                                </div>
-
-                                <!-- Repeat Password input -->
-                                <div class="form-outline mb-4">
-                                    <input type="password" id="registerRepeatPassword" runat="server" class="form-control" />
-                                    <label class="form-label" for="registerRepeatPassword">Repeat password</label>
-                                </div>
-
-                                <!-- Phone numbers input -->
-                                <div class="form-outline mb-4">
-                                    <input type="text" id="phoneNumbers" runat="server" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
-                                    <label class="form-label" for="phoneNumbers">Phone numbers</label>
-                                </div>
-
-                                <!-- Phone numbers input -->
-                                <div class="form-outline mb-4">
-                                    <input type="text" id="identity" runat="server" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
-                                    <label class="form-label" for="identity">Identity</label>
-                                </div>
 
                                 <!-- Checkbox -->
-                                <div class="form-check d-flex justify-content-center mb-4">
+                                <div class="form-check d-flex justify-content-center mb-2">
                                     <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
                                         aria-describedby="registerCheckHelpText" />
                                     <label class="form-check-label" for="registerCheck">
@@ -175,69 +181,64 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <div class="p-2">
-                        <a href="#san3" style="padding: 20px;">ĐẶT NGAY
+                    <div class="p-2" style="margin-top: 20px">
+                        <a href="#san3" style="padding: 10px; text-decoration: none; border: solid 1px greenyellow; border-radius: 40px; color: navajowhite; font-family: emoji; font-style: italic; font-size: medium;">ĐẶT NGAY
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="container-fluid">
-            <div class="row">
-                <asp:Repeater runat="server" ID="rpDanhSachSan" OnItemDataBound="rpDanhSachSan_ItemDataBound">
-                    <ItemTemplate>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card mb-4" style="width: 18rem;">
-                                <h2 style="color: #000;"><%#Eval("field_type_name") %></h2>
-                                <div class="card-body">
-                                    <h5 class="card-title"><%#Eval("field_name") %></h5>
-                                    <div class="listBookTimes_<%#Eval("field_id") %> row">
-                                        <asp:Repeater runat="server" ID="rpKhungGio">
-                                            <ItemTemplate>
-                                                <div class="col-6">
-                                                    <a href="#" class="btn btn-primary cursor-poiter" style="min-width: 120px;" id="btnSan_<%#Eval("book_time_id") %>_<%#Eval("field_id") %>" 
-                                                        onclick="btnTimes('<%#Eval("book_time_id") %>','<%#Eval("field_id") %>')"><%#Eval("book_time_detail") %></a>
-                                                </div>
-                                            </ItemTemplate>
-                                        </asp:Repeater>
+        <div id="san3">
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="row">
+                        <asp:Repeater runat="server" ID="rpDanhSachSan" OnItemDataBound="rpDanhSachSan_ItemDataBound">
+                            <ItemTemplate>
+                                <div class="col-lg-6 col-md-12 col-sm-12">
+                                    <div class="card mb-4" style="background-color: transparent; height: 20%;">
+                                        <h2 style="color: snow"><%#Eval("field_type_name") %></h2>
+                                        <div class="card-body" style="width: 300%; background-color: transparent; border: solid 1px lightgoldenrodyellow;">
+                                            <h5 class="card-title" style="color: snow"><%#Eval("field_name") %></h5>
+                                            <div class="listBookTimes_<%#Eval("field_id") %> row">
+                                                <asp:Repeater runat="server" ID="rpKhungGio">
+                                                    <ItemTemplate>
+                                                        <div class="col-3 mb-3 ">
+                                                            <a href="#" class="btn btn-primary cursor-poiter" style="min-width: 120px;" id="btnSan_<%#Eval("book_time_id") %>_<%#Eval("field_id") %>"
+                                                                onclick="btnTimes('<%#Eval("book_time_id") %>','<%#Eval("field_id") %>')"><%#Eval("book_time_detail") %></a>
+                                                        </div>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
+                                            </div>
+                                            <p class="card-text" id="txtStatus_<%#Eval("field_id") %>"></p>
+                                            <%--<a href="#" class="btn btn-primary mt-2" onclick="btnDatSan(<%#Eval("field_id") %>)" id="<%#Eval("field_id") %>">Đặt sân</a>--%>
+                                        </div>
                                     </div>
-                                    <p class="card-text" id="txtStatus_<%#Eval("field_id") %>"></p>
-                                    <%--<a href="#" class="btn btn-primary mt-2" onclick="btnDatSan(<%#Eval("field_id") %>)" id="<%#Eval("field_id") %>">Đặt sân</a>--%>
                                 </div>
-                            </div>
-                        </div>
-                    </ItemTemplate>
-                </asp:Repeater>
+                            </ItemTemplate>
+
+                        </asp:Repeater>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: none;">
+                <input type="text" id="txtTrangThaiSan" runat="server" name="name" />
+
+                <input type="text" id="txtIdSan" runat="server" />
+                <input type="text" id="txtIdGio" runat="server" />
+                <a href="#" id="btnXemTrangThaiSan" runat="server" onserverclick="btnXemTrangThaiSan_ServerClick"></a>
+
+                <input type="text" id="txtIdSanDaDat" runat="server" name="name" />
+                <input type="text" id="txtIdTimeDaDat" runat="server" name="name" />
+
+                <input type="text" id="txtIdSanDat" runat="server" />
+                <%--<a href="#" id="btnDatSan" runat="server" onserverclick="btnDatSan_ServerClick"></a>--%>
             </div>
         </div>
-
-        <div style="display: none;">
-            <input type="text" id="txtTrangThaiSan" runat="server" name="name" />
-
-            <input type="text" id="txtIdSan" runat="server" />
-            <input type="text" id="txtIdGio" runat="server" />
-            <a href="#" id="btnXemTrangThaiSan" runat="server" onserverclick="btnXemTrangThaiSan_ServerClick"></a>
-
-            <input type="text" id="txtIdSanDaDat" runat="server" name="name" />
-            <input type="text" id="txtIdTimeDaDat" runat="server" name="name" />
-
-            <input type="text" id="txtIdSanDat" runat="server" />
-            <%--<a href="#" id="btnDatSan" runat="server" onserverclick="btnDatSan_ServerClick"></a>--%>
-        </div>
-
         <div id="sanpham">
             <div class="khoangcach">
                 <h1>Sản Phẩm</h1>
                 <div class="dropdown" style="margin-top: 30px;">
-                    <%--<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Tất cả sản phẩm
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Nước giải khát</a>
-                        <a class="dropdown-item" href="#">Áo quần</a>
-                        <a class="dropdown-item" href="#">Giày dép</a>
-                    </div>--%>
 
                     <asp:DropDownList ID="ddlSanPham" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSanPham_SelectedIndexChanged">
                         <asp:ListItem>Tất cả sản phẩm</asp:ListItem>
@@ -314,7 +315,7 @@
             </div>
         </div>
 
-        
+
 
         <%--<div id="san3">
             <div class="khoangcach">

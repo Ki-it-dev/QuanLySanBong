@@ -20,32 +20,6 @@
         color: greenyellow;
     }
 
-#san3 .container, #san5 .container, #san7 .container {
-    display: grid;
-    grid-template-areas:
-        "h1 h2"
-        "h3 h4";
-}
-.box1{
-    grid-area: h1;
-    border: 1px solid #ffffff;
-    margin: 15px;
-}
-.box2{
-    grid-area: h2;
-    border: 1px solid #ffffff;
-    margin: 15px;
-}
-.box3{
-    grid-area: h3;
-    border: 1px solid #ffffff;
-    margin: 15px;
-}
-.box4{
-    grid-area: h4;
-    border: 1px solid #ffffff;
-    margin: 15px;
-}
 .h{
     margin: 10px;
     width:100px;
