@@ -116,24 +116,24 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <!-- Name input -->
-                                        <div class="form-outline mb-3">
+                                        <div class="form-outline mb-2">
                                             <input type="text" id="registerName" runat="server" class="form-control" />
                                             <label class="form-label" for="registerName">Full name</label>
                                         </div>
                                         <!-- Email input -->
-                                        <div class="form-outline mb-3">
+                                        <div class="form-outline mb-2">
                                             <input type="email" id="registerEmail" runat="server" class="form-control" />
                                             <label class="form-label" for="registerEmail">Email</label>
                                         </div>
 
 
                                         <!-- Password input -->
-                                        <div class="form-outline mb-3">
+                                        <div class="form-outline mb-2">
                                             <input type="password" id="registerPassword" runat="server" class="form-control" />
                                             <label class="form-label" for="registerPassword">Password</label>
                                         </div>
                                         <!-- Phone numbers input -->
-                                        <div class="form-outline mb-3">
+                                        <div class="form-outline mb-2">
                                             <input type="text" id="phoneNumbers" runat="server" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
                                             <label class="form-label" for="phoneNumbers">Phone</label>
                                         </div>
@@ -142,13 +142,13 @@
 
                                     <div class="col-md-6">
                                         <!-- Identity input -->
-                                        <div class="form-outline mb-3">
+                                        <div class="form-outline mb-2">
                                             <input type="text" id="identity" runat="server" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
                                             <label class="form-label" for="identity">Identity</label>
                                         </div>
 
                                         <!-- Username input -->
-                                        <div class="form-outline mb-3">
+                                        <div class="form-outline mb-2">
                                             <input type="text" id="registerUsername" runat="server" class="form-control" />
                                             <label class="form-label" for="registerUsername">Account</label>
                                         </div>
@@ -191,13 +191,13 @@
         <div id="san3">
             <div class="container-fluid">
                 <div class="container">
-                    <div class="row">
+                    <div class="row" >
                         <asp:Repeater runat="server" ID="rpDanhSachSan" OnItemDataBound="rpDanhSachSan_ItemDataBound">
-                            <ItemTemplate>
+                            <ItemTemplate >
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <div class="card mb-4" style="background-color: transparent; height: 20%;">
                                         <h2 style="color: snow"><%#Eval("field_type_name") %></h2>
-                                        <div class="card-body" style="width: 300%; background-color: transparent; border: solid 1px lightgoldenrodyellow;">
+                                        <div class="card-body" style="width: 100%; background-color: transparent; border: solid 1px lightgoldenrodyellow;">
                                             <h5 class="card-title" style="color: snow"><%#Eval("field_name") %></h5>
                                             <div class="listBookTimes_<%#Eval("field_id") %> row">
                                                 <asp:Repeater runat="server" ID="rpKhungGio">
@@ -254,17 +254,19 @@
                         <div class="row">
                             <asp:Repeater runat="server" ID="rpQuanAo">
                                 <ItemTemplate>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-2 mb-3">
                                         <div class="card">
                                             <img class="card-img-top" src="<%#Eval("picture")%>" alt="Card image cap">
                                             <div class="card-body">
-                                                <h4 class="card-title"><%#Eval("clothes_name") %></h4>
-                                                <p class="card-text"><%#Eval("clothes_description") %></p>
-                                                <h5><%#Eval("clothes_price") %></h5>
+                                                <div class="d-flex align-items-center flex-column" style="height: 200px;">
+                                                <div class=" p-2"><h4 class="card-title"><%#Eval("clothes_name") %></h4></div>
+                                                <div class="p-2"><p class="card-text"><%#Eval("clothes_description") %></p></div>
+                                                <div class="mt-auto p-2"><h6><%#Eval("clothes_price") %> VNĐ</h6></div>
+                                                    </div>
                                             </div>
                                             <div class="card-footer">
                                                 <small class="text-muted">Last updated: <%=txtDateTImeNow%></small>
-                                                <small style="float: right" class="text-muted">SL: còn <%#Eval("quantity") %></small>
+                                                <small style="float: right" class="text-muted mt-3">SL: còn <%#Eval("quantity") %></small>
                                             </div>
                                         </div>
                                     </div>
@@ -273,17 +275,19 @@
 
                             <asp:Repeater runat="server" ID="rpGiay">
                                 <ItemTemplate>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-2 mb-3">
                                         <div class="card">
                                             <img class="card-img-top" src="<%#Eval("picture")%>" alt="Card image cap">
                                             <div class="card-body">
-                                                <h4 class="card-title"><%#Eval("shoes_name") %></h4>
-                                                <p class="card-text"><%#Eval("shoes_description") %></p>
-                                                <h5><%#Eval("shoes_price") %></h5>
+                                                <div class="d-flex align-items-center flex-column" style="height: 200px;">
+                                                <div class="p-2"><h4 class="card-title"><%#Eval("shoes_name") %></h4></div>
+                                                <div class="p-2"><p class="card-text"><%#Eval("shoes_description") %></p></div>
+                                                <div class="mt-auto p-2"><h6><%#Eval("shoes_price") %> VNĐ</h6></div>
+                                                    </div>
                                             </div>
                                             <div class="card-footer">
                                                 <small class="text-muted">Last updated: <%=txtDateTImeNow%></small>
-                                                <small style="float: right" class="text-muted">SL: còn <%#Eval("quantity") %></small>
+                                                <small style="float: right" class="text-muted mt-3">SL: còn <%#Eval("quantity") %></small>
                                             </div>
                                         </div>
                                     </div>
@@ -292,17 +296,20 @@
 
                             <asp:Repeater runat="server" ID="rpDoUong">
                                 <ItemTemplate>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-2 mb-3">
                                         <div class="card">
                                             <img class="card-img-top" src="<%#Eval("picture")%>" alt="Card image cap">
                                             <div class="card-body">
-                                                <h4 class="card-title"><%#Eval("drinks_name") %></h4>
-                                                <p class="card-text"><%#Eval("drinks_description") %></p>
-                                                <h5><%#Eval("drinks_price") %></h5>
+                                            <div class="d-flex align-items-center flex-column" style="height: 200px;">
+                                                <div class="p-2"><h4 class="card-title"><%#Eval("drinks_name") %></h4></div>
+                                                <div class="p-2"><p class="card-text"><%#Eval("drinks_description") %></p></div>
+                                                 <div class="mt-auto p-2"><h6><%#Eval("drinks_price") %> VNĐ</h6></div>
                                             </div>
+                                            </div>
+
                                             <div class="card-footer">
                                                 <small class="text-muted">Last updated: <%=txtDateTImeNow%></small>
-                                                <small style="float: right" class="text-muted">SL: còn <%#Eval("quantity") %></small>
+                                                <small style="float: right" class="text-muted mt-3">SL: còn <%#Eval("quantity") %></small>
                                             </div>
                                         </div>
                                     </div>

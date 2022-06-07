@@ -30,7 +30,7 @@ public partial class TrangChu : System.Web.UI.Page
             ddlSanPhamData();
             loadData();
         }
-        txtDateTImeNow = DateTime.Now.ToString();
+        txtDateTImeNow = DateTime.Now.ToString("dd/MM/yyyy");
     }
     protected void ddlSanPhamData()
     {
