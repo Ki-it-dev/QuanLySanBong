@@ -20,6 +20,8 @@ public class webui
         list.Add("webTrangChu|trang-chu|~/Default.aspx");
         list.Add("webXacNhanDatSan|xac-nhan-dat-san|~/web_module/module_XacNhanDatSan.aspx");
         list.Add("webQuanLyDatSanCaNhan|quan-ly-dat-san-ca-nhan|~/web_module/module_QuanLyDatSanCaNhan.aspx");
+        list.Add("webSanPham|san-pham|~/web_module/module_SanPham.aspx");
+        list.Add("webSan|danh-sach-san|~/web_module/module_San.aspx");
 
         list.Add("webThongTinCaNhan|thong-tin-ca-nhan|~/web_module/module_XemThongTinCaNhan.aspx");
         list.Add("webChinhSuaThongTinCaNhan|chinh-sua-thong-tin-ca-nhan|~/web_module/module_ChinhSuaThongTinCaNhan.aspx");

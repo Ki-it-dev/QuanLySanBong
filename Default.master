@@ -92,17 +92,19 @@
                             <a class="nav-link" href="/trang-chu">Trang chủ<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Sân</a>
+                            <a class="nav-link" href="/danh-sach-san">Sân</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#sanpham">Sản Phẩm</a>
+                            <a class="nav-link" href="/san-pham">Sản Phẩm</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="<%=txtNone%>" href="/quan-ly-dat-san-chung">Quản lý đặt sân chung</a>
+                            <a class="nav-link" style="<%=txtNone%>;<%=styleNone%>" href="/quan-ly-dat-san-chung">Quản lý đặt sân chung</a>
                         </li>
                     </ul>
-                    <input class="form-control mr-sm-2" type="search" style="width: 500px;" placeholder="Nhập sân hoặc sản phẩm bất kỳ..." aria-label="search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm Kiếm</button>
+                    <input class="form-control mr-sm-2" type="search" style="width: 500px;" id="txtTimKiem" runat="server" 
+                        placeholder="Nhập sân hoặc sản phẩm bất kỳ..." aria-label="search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="btnTimKiem" runat="server" onserverclick="btnTimKiem_ServerClick" type="submit">Tìm Kiếm</button>
+
                     <ul class="navbar-nav ml-auto">
 
                         <li class="nav-item">
@@ -110,7 +112,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <div class="dropdown">
-                                <a class="nav-link" href="#" id="txtUserName" runat="server">Đăng Nhập</a>
+                                <a class="nav-link" href="/trang-chu" id="txtUserName" runat="server">Đăng Nhập</a>
                                 <div class="dropdown-content" style="<%=styleNone%>">
                                     <a href="/thong-tin-ca-nhan">Quản lý tài khoản</a>
                                     <a href="/quan-ly-dat-san-ca-nhan">Quản lý đặt sân</a>

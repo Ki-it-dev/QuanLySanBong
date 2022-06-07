@@ -39,7 +39,7 @@
                                             <td><%#Eval("book_time_detail") %></td>
                                             <td><%#Eval("price") %></td>
                                             <td><%#Eval("transaction_datetime") %></td>
-                                            <td><%#Eval("transaction_status") %></td>
+                                            <td><%#Eval("transaction_status")%></td>
                                         </tr>
                                     </ItemTemplate>
                                 </asp:Repeater>

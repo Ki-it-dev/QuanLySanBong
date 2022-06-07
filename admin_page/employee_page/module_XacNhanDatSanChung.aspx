@@ -24,12 +24,16 @@
                                 <div class="p-2">Người đặt : <%#Eval("users_account") %></div>
                                 <div class="p-2">Ngày đặt  : <%#Eval("transaction_datetime") %></div>
                                 <div class="d-flex flex-row-reverse">
-                                    <div class="p-2"><a href="#" 
-                                        onclick="btnHuy('<%#Eval("field_id") %>','<%#Eval("book_time_id") %>')">
-                                        <span class="badge badge-danger">Hủy</span></a></div>
-                                    <div class="p-2"><a href="#" 
-                                        onclick="btnXacNhan('<%#Eval("field_id") %>','<%#Eval("book_time_id") %>')">
-                                        <span class="badge badge-success">Xác nhận</span></a></div>
+                                    <div class="p-2">
+                                        <a href="#"
+                                            onclick="btnHuy('<%#Eval("field_id") %>','<%#Eval("book_time_id") %>')">
+                                            <span class="badge badge-danger">Hủy</span></a>
+                                    </div>
+                                    <div class="p-2">
+                                        <a href="#"
+                                            onclick="btnXacNhan('<%#Eval("field_id") %>','<%#Eval("book_time_id") %>')">
+                                            <span class="badge badge-success">Xác nhận</span></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -39,10 +43,12 @@
         </div>
     </div>
 
-    <input type="text" name="name" value="" runat="server" id="txtIdSan"/>
-    <input type="text" name="name" value="" runat="server" id="txtIdGio"/>
-    <a href="#" id="btnServerHuy" runat="server" onserverclick="btnServerHuy_ServerClick">content</a>
-    <a href="#" id="btnServerXacNhan" runat="server" onserverclick="btnServerXacNhan_ServerClick">content</a>
+    <div style="display:none;">
+        <input type="text" name="name" value="" runat="server" id="txtIdSan" />
+        <input type="text" name="name" value="" runat="server" id="txtIdGio" />
+        <a href="#" id="btnServerHuy" runat="server" onserverclick="btnServerHuy_ServerClick">content</a>
+        <a href="#" id="btnServerXacNhan" runat="server" onserverclick="btnServerXacNhan_ServerClick">content</a>
+    </div>
 
     <script>
         function btnHuy(idSan, idGio) {
