@@ -46,6 +46,15 @@ public partial class TrangChu : System.Web.UI.Page
         //Kiem tra tai khoan
         var getAccount = from u in db.tbUsers select u;
 
+        txtCheckCMND.Value = string.Join(",", getAccount.Select(x => x.users_identity));
+        string[] arrCMND = txtCheckCMND.Value.Split(',');
+
+        txtCheckAccount.Value = string.Join(",", getAccount.Select(x => x.users_account));
+        string[] arrAcc = txtCheckCMND.Value.Split(',');
+
+        txtCheckPhone.Value = string.Join(",", getAccount.Select(x => x.users_phoneNumber));
+        string[] arrPhone = txtCheckCMND.Value.Split(',');
+
         if (registerUsername.Value == "" || registerRepeatPassword.Value == "" ||
             registerPassword.Value == "" || registerEmail.Value == "" ||
             identity.Value == "" || registerName.Value == "" || phoneNumbers.Value == "")
@@ -75,20 +84,23 @@ public partial class TrangChu : System.Web.UI.Page
         }
         if (getAccount.Count() > 0)
         {
-            if (registerUsername.Value == getAccount.First().users_account)
+            for (int i = 0; i < arrAcc.Length; i++)
             {
-                alert.alert_Warning(Page, "Tài khoản đã tồn tại", "");
-                return;
-            }
-            if (identity.Value == getAccount.First().users_identity)
-            {
-                alert.alert_Warning(Page, "CMND đã tồn tại", "");
-                return;
-            }
-            if (phoneNumbers.Value == getAccount.First().users_phoneNumber)
-            {
-                alert.alert_Warning(Page, "Số điện thoại đã tồn tại", "");
-                return;
+                if (registerUsername.Value == arrAcc[i])
+                {
+                    alert.alert_Warning(Page, "Tài khoản đã tồn tại", "");
+                    return;
+                }
+                if (identity.Value == arrCMND[i])
+                {
+                    alert.alert_Warning(Page, "CMND đã tồn tại", "");
+                    return;
+                }
+                if (phoneNumbers.Value == arrPhone[i])
+                {
+                    alert.alert_Warning(Page, "Số điện thoại đã tồn tại", "");
+                    return;
+                }
             }
         }
         tbUser insert = new tbUser();

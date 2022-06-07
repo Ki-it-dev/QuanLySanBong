@@ -189,5 +189,12 @@
             </div>
         </div>
     </div>
+
+    <div style="display: none;">
+        <input type="text" runat="server" id="txtCheckCMND" name="name" value="" />
+        <input type="text" runat="server" id="txtCheckPhone" name="name" value="" />
+        <input type="text" runat="server" id="txtCheckAccount" name="name" value="" />
+    </div>
+
 </asp:Content>
 

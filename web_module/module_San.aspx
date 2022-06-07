@@ -53,6 +53,9 @@
             <input type="text" id="txtIdSanDaDat" runat="server" name="name" />
             <input type="text" id="txtIdTimeDaDat" runat="server" name="name" />
 
+            <input type="text" id="txtIdSanCho" runat="server" name="name" />
+            <input type="text" id="txtIdTimeCho" runat="server" name="name" />
+
             <input type="text" id="txtIdSanDat" runat="server" />
             <%--<a href="#" id="btnDatSan" runat="server" onserverclick="btnDatSan_ServerClick"></a>--%>
         </div>
@@ -65,6 +68,12 @@
             font-weight: 600;
             pointer-events: none;
         }
+        .sanCho {
+            background: yellow !important;
+            color: #000 !important;
+            font-weight: 600;
+            /*pointer-events: none;*/
+        }
     </style>
 
     <script>
@@ -72,16 +81,14 @@
         var _idSanDaDat = document.getElementById("<%=txtIdSanDaDat.ClientID%>").value.split(',')
         var _idTimeDaDat = document.getElementById("<%=txtIdTimeDaDat.ClientID%>").value.split(',')
 
+        var _idSanCho = document.getElementById("<%=txtIdSanCho.ClientID%>").value.split(',')
+        var _idTimeCho = document.getElementById("<%=txtIdTimeCho.ClientID%>").value.split(',')
+
         function btnTimes(_idgio, _idsan) {
             document.getElementById("<%=txtIdGio.ClientID%>").value = _idgio;
             document.getElementById("<%=txtIdSan.ClientID%>").value = _idsan;
             document.getElementById("<%=btnXemTrangThaiSan.ClientID%>").click();
         }
-
-        <%--function btnDatSan(idSan) {
-            document.getElementById("<%=txtIdSanDat.ClientID%>").value = idSan;
-            document.getElementById("<%=btnDatSan.ClientID%>").click();
-        }--%>
 
         $(document).ready(function () {
             for (var i = 0; i < _idSanDaDat.length; i++) {
@@ -89,6 +96,13 @@
                 //console.log(getElements)
                 getElements.forEach(function (element) {
                     element.classList.add('sanDaDat');
+                });
+            }
+            for (var i = 0; i < _idSanCho.length; i++) {
+                var getElements = document.querySelectorAll("#btnSan_" + _idTimeCho[i] + "_" + _idSanCho[i]);
+                //console.log(getElements)
+                getElements.forEach(function (element) {
+                    element.classList.add('sanCho');
                 });
             }
         })

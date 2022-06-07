@@ -21,6 +21,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
+                                    <th scope="col">Phân quyền</th>
                                     <th scope="col">Tên tài khoản</th>
                                     <th scope="col">Mật khẩu</th>
                                     <th scope="col">Số điện thoại</th>
@@ -36,6 +37,7 @@
                                     <ItemTemplate>
                                         <tr>
                                             <th scope="row"><%=STT++%></th>
+                                            <td><%#Eval("group_user_name") %></td>
                                             <td><%#Eval("users_fullname") %></td>
                                             <td><%#Eval("users_account") %></td>
                                             <td><%#Eval("users_phoneNumber") %></td>

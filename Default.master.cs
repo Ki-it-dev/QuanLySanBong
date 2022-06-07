@@ -55,9 +55,9 @@ public partial class _Default : System.Web.UI.MasterPage
         string value =  locDau(txtTimKiem.Value);
 
         //Danh sach san pham
-        var getDoUong = from du in db.tbDrinks select du.drinks_name;
-        var getQuanAo = from qa in db.tbClothes select qa.clothes_name;
-        var getGiay = from g in db.tbShoes select g.shoes_name;
+        //var getDoUong = from du in db.tbDrinks select du.drinks_name;
+        //var getQuanAo = from qa in db.tbClothes select qa.clothes_name;
+        //var getGiay = from g in db.tbShoes select g.shoes_name;
 
         //var dsSan = db.tbFieldTypes.Where(x => x.field_type_name.Contains(value));
         //var dsDoUong = db.tbDrinks.Where(x => x.drinks_name.Contains(value));

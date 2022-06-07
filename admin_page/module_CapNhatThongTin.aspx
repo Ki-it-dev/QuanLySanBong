@@ -20,7 +20,7 @@
                         <div class="p-2">
                             <div class="d-flex flex-row">
                                 <div class="p-2">
-                                    <img style="margin-bottom: 30px; margin-right: 20px; width: 10rem; height: 10rem;" src="images/tt.jpg" alt="">
+                                    <img style="margin-bottom: 30px; margin-right: 20px; width: 10rem; height: 10rem;" src="../images/tt.jpg" alt="">
                                 </div>
                                 <div class="p-2">
                                     <div class="d-flex flex-column">
@@ -64,12 +64,22 @@
                                         <div class="p-2">
                                             <p>
                                                 Phân quyền :
-                                                
+                                                <asp:DropDownList runat="server" ID="ddlPhanQuyen">
+                                                    <asp:ListItem Text="Admin" Value="1" />
+                                                    <asp:ListItem Text="Nhân viên" Value="2" />
+                                                    <asp:ListItem Text="Khách hàng" Value="3" />
+                                                </asp:DropDownList>
                                             </p>
                                         </div>
 
                                         <div class="p-2">
-                                            <p>Trạng thái  : <%=users_status%></p>
+                                            <p>
+                                                Trạng thái  : 
+                                                <asp:DropDownList runat="server" ID="ddlStatus">
+                                                    <asp:ListItem Text="True" Value="1" />
+                                                    <asp:ListItem Text="False" Value="2" />
+                                                </asp:DropDownList>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -90,7 +100,13 @@
         </div>
     </div>
 
-    <input type="text" runat="server" id="txtIdUser" name="name" value="" />
+    <div style="display: none;">
+        <input type="text" runat="server" id="txtIdUser" name="name" value="" />
+
+        <input type="text" runat="server" id="txtCheckCMND" name="name" value="" />
+        <input type="text" runat="server" id="txtCheckPhone" name="name" value="" />
+        <input type="text" runat="server" id="txtCheckAccount" name="name" value="" />
+    </div>
 
 </asp:Content>
 

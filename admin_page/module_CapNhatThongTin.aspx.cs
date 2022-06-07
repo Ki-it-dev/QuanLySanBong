@@ -10,7 +10,7 @@ public partial class admin_page_module_CapNhatThongTin : System.Web.UI.Page
     dbcsdlDataContext db = new dbcsdlDataContext();
     cls_Alert alert = new cls_Alert();
 
-    protected string users_status, txtTenTaiKhoan;
+    protected string txtTenTaiKhoan;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -31,23 +31,43 @@ public partial class admin_page_module_CapNhatThongTin : System.Web.UI.Page
                 txtPhone.Value = getUser.users_phoneNumber;
                 txtTaiKhoan.Value = getUser.users_account;
                 txtTen.Value = getUser.users_fullname;
-                users_status = getUser.users_status.ToString();
-
             }
+            loadData();
         }
         else
         {
             alert.alert_Warning(Page, "Vui lòng đăng nhập để tiếp tục", "");
         }
     }
+    protected void loadData()
+    {
+        var getUser = (from u in db.tbUsers where u.users_id == Convert.ToInt32(txtIdUser.Value) select u).FirstOrDefault();
 
+        txtTenTaiKhoan = getUser.users_account;
+        txtCMND.Value = getUser.users_identity;
+        txtDiaChi.Value = getUser.users_address;
+        txtEmail.Value = getUser.users_email;
+        txtPhone.Value = getUser.users_phoneNumber;
+        txtTaiKhoan.Value = getUser.users_account;
+        txtTen.Value = getUser.users_fullname;
+    }
     protected void btnChinhSua_ServerClick(object sender, EventArgs e)
     {
         //Kiem tra tai khoan
-        var getAccount = from u in db.tbUsers select u;
+        var getAccount = from u in db.tbUsers where u.users_id != Convert.ToInt32(txtIdUser.Value) select u;
+
         var getUser = (from u in db.tbUsers
                        where u.users_account == Request.Cookies["UserName"].Value
                        select u);
+
+        txtCheckCMND.Value = string.Join(",", getAccount.Select(x => x.users_identity));
+        string[] arrCMND = txtCheckCMND.Value.Split(',');
+
+        txtCheckAccount.Value = string.Join(",", getAccount.Select(x => x.users_account));
+        string[] arrAcc = txtCheckCMND.Value.Split(',');
+
+        txtCheckPhone.Value = string.Join(",", getAccount.Select(x => x.users_phoneNumber));
+        string[] arrPhone = txtCheckCMND.Value.Split(',');
 
         if (txtTaiKhoan.Value == "" ||
             txtEmail.Value == "" ||
@@ -72,21 +92,38 @@ public partial class admin_page_module_CapNhatThongTin : System.Web.UI.Page
         }
         if (getAccount.Count() > 0)
         {
-            if (txtTaiKhoan.Value == getAccount.First().users_account)
+            for(int i = 0; i < arrAcc.Length; i++)
             {
-                alert.alert_Warning(Page, "Tài khoản đã tồn tại", "");
-                return;
-            }
-            if (txtCMND.Value == getAccount.First().users_identity)
-            {
-                alert.alert_Warning(Page, "CMND đã tồn tại", "");
-                return;
-            }
-            if (txtPhone.Value == getAccount.First().users_phoneNumber)
-            {
-                alert.alert_Warning(Page, "Số điện thoại đã tồn tại", "");
-                return;
+                if (txtTaiKhoan.Value == arrAcc[i])
+                {
+                    alert.alert_Warning(Page, "Tài khoản đã tồn tại", "");
+                    return;
+                }
+                if (txtCMND.Value == arrCMND[i])
+                {
+                    alert.alert_Warning(Page, "CMND đã tồn tại", "");
+                    return;
+                }
+                if (txtPhone.Value == arrPhone[i])
+                {
+                    alert.alert_Warning(Page, "Số điện thoại đã tồn tại", "");
+                    return;
+                }
             }
         }
+
+        tbUser update = db.tbUsers.Where(x => x.users_id == Convert.ToInt32(txtIdUser.Value)).FirstOrDefault();
+
+        update.users_account = txtTaiKhoan.Value;
+        update.users_address = txtDiaChi.Value;
+        update.users_email = txtEmail.Value;
+        update.users_fullname = txtTen.Value;
+        update.users_identity = txtCMND.Value;
+        update.users_phoneNumber = txtPhone.Value;
+        update.users_status = Convert.ToBoolean(ddlStatus.SelectedItem.Text);
+        update.group_user_id = Convert.ToInt32(ddlPhanQuyen.SelectedValue);
+        db.SubmitChanges();
+        alert.alert_Success(Page, "Cập nhật thành công", "");
+        Response.Redirect("/quan-ly-tai-khoan");
     }
 }
