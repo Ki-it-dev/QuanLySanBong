@@ -27,8 +27,6 @@
                         <asp:ListItem>Giày dép</asp:ListItem>
                     </asp:DropDownList>
                  </div>
-            
-                    
 
                 </div>
                 <div class="card-deck">
