@@ -26,11 +26,11 @@
                                     <div class="d-flex flex-column">
                                         <div class="p-2">
                                             <p>Email:
-                                                <input type="text" name="name" id="txtEmail" runat="server"/></p>
+                                                <input type="text" name="name" id="txtEmail"  runat="server"/></p>
                                         </div>
                                         <div class="p-2">
                                             <p>Tên tài khoản :
-                                                <input type="text" name="name" id="txtTaiKhoan" runat="server"/></p>
+                                                <input type="text" name="name" id="txtTaiKhoan" readonly runat="server"/></p>
                                         </div>
                                         <div class="p-2">
                                             <p>CMND/CCCD :
@@ -69,6 +69,11 @@
                 </section>
             </div>
         </div>
+    </div>
+    <div style="display: none;">
+        <input type="text" runat="server" id="txtCheckCMND" name="name" value="" />
+        <input type="text" runat="server" id="txtCheckPhone" name="name" value="" />
+        <input type="text" runat="server" id="txtCheckAccount" name="name" value="" />
     </div>
 </asp:Content>
 

@@ -18,19 +18,26 @@ public partial class admin_page_module_CapNhatThongTin : System.Web.UI.Page
         {
             if (!IsPostBack)
             {
-                string _id = Context.Items["idUser"].ToString();
+                if(Context.Items["idUser"] == null)
+                {
+                    Response.Redirect("/trang-chu");
+                }
+                else
+                {
+                    string _id = Context.Items["idUser"].ToString();
 
-                txtIdUser.Value = _id;
+                    txtIdUser.Value = _id;
 
-                var getUser = (from u in db.tbUsers where u.users_id == Convert.ToInt32(_id) select u).FirstOrDefault();
+                    var getUser = (from u in db.tbUsers where u.users_id == Convert.ToInt32(_id) select u).FirstOrDefault();
 
-                txtTenTaiKhoan = getUser.users_account;
-                txtCMND.Value = getUser.users_identity;
-                txtDiaChi.Value = getUser.users_address;
-                txtEmail.Value = getUser.users_email;
-                txtPhone.Value = getUser.users_phoneNumber;
-                txtTaiKhoan.Value = getUser.users_account;
-                txtTen.Value = getUser.users_fullname;
+                    txtTenTaiKhoan = getUser.users_account;
+                    txtCMND.Value = getUser.users_identity;
+                    txtDiaChi.Value = getUser.users_address;
+                    txtEmail.Value = getUser.users_email;
+                    txtPhone.Value = getUser.users_phoneNumber;
+                    txtTaiKhoan.Value = getUser.users_account;
+                    txtTen.Value = getUser.users_fullname;
+                }
             }
             loadData();
         }

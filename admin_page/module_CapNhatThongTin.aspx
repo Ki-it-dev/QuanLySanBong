@@ -33,7 +33,7 @@
                                         <div class="p-2">
                                             <p>
                                                 Tên tài khoản :
-                                                <input type="text" name="name" id="txtTaiKhoan" runat="server" />
+                                                <input type="text" name="name" readonly id="txtTaiKhoan" runat="server" />
                                             </p>
                                         </div>
                                         <div class="p-2">

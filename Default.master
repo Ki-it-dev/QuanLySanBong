@@ -83,7 +83,7 @@
     <form id="form1" runat="server">
         <div class="header">
             <nav id="navbar-example2" class="navbar  fixed-top navbar-expand-lg navbar-dark bg-dark  bg-company-red  col-lg-12 col-md-6 col-sm-4">
-                <a class="navbar-brand" href="#index">
+                <a class="navbar-brand" href="/trang-chu">
                     <img src="../../images/SanBong/TrangChu/lo.png" width="70" height="70" alt="">
                 </a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">

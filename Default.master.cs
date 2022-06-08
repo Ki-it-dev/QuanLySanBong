@@ -63,8 +63,8 @@ public partial class _Default : System.Web.UI.MasterPage
 
         string _idSan = string.Join(",", dsSan.Select(x => x.field_type_id));
         string _idDoUong = string.Join(",", dsDoUong.Select(x => x.drinks_id));
-        string _idGiay = string.Join(",", dsQuanAo.Select(x => x.clothes_id));
-        string _idQuanAo = string.Join(",", dsGiay.Select(x => x.shoes_id));
+        string _idGiay = string.Join(",", dsGiay.Select(x => x.shoes_id));
+        string _idQuanAo = string.Join(",", dsQuanAo.Select(x => x.clothes_id));
 
         Context.Items["idSan"] = _idSan;
         Context.Items["idDoUong"] = _idDoUong;

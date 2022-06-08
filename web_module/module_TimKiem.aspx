@@ -12,9 +12,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div style="<%=styleNone%>">
-        <h1 style="color: greenyellow;padding-top: 25%; text-align:center;">Không tìm thấy dữ liệu</h1></div>
+        <h1 style="color: greenyellow;padding-top: 25%; text-align:center;">Không tìm thấy dữ liệu</h1>
+    </div>
 
-    <div id="sanpham">
+    <div id="sanpham" style="<%=noneSp%>">
         <div class="container-fluid" style="padding-top: 8%;">
             <div class="d-flex justify-content-between">
             </div>
@@ -23,7 +24,7 @@
                     <div class="row">
                         <asp:Repeater runat="server" ID="rpQuanAo">
                             <ItemTemplate>
-                                <div class="col-lg-2 col-md-1 col-sm-1 mb-3">
+                                <div class="col-lg-2 col-md-1 col-sm-1 mb-3" style="">
                                     <div class="card">
                                         <img class="card-img-top" src="<%#Eval("picture")%>" alt="Card image cap">
                                         <div class="card-body">
@@ -55,7 +56,7 @@
 
                         <asp:Repeater runat="server" ID="rpGiay">
                             <ItemTemplate>
-                                <div class="col-lg-2 mb-3">
+                                <div class="col-lg-2 mb-3" style="">
                                     <div class="card">
                                         <img class="card-img-top" src="<%#Eval("picture")%>" alt="Card image cap">
                                         <div class="card-body">
@@ -87,7 +88,7 @@
 
                         <asp:Repeater runat="server" ID="rpDoUong">
                             <ItemTemplate>
-                                <div class="col-lg-2 mb-3">
+                                <div class="col-lg-2 mb-3" style="">
                                     <div class="card">
                                         <img class="card-img-top" src="<%#Eval("picture")%>" alt="Card image cap">
                                         <div class="card-body">
@@ -119,7 +120,7 @@
         <div style="padding:8%;"></div>
     </div>
 
-    <div id="san3">
+    <div id="san3" style="<%=noneSan%>">
         <div class="container-fluid" style="padding-top: 8%;">
             <div class="container">
                 <div class="row">
@@ -175,8 +176,6 @@
         </div>
         <div style="padding:8%;"></div>
     </div>
-
-    
 
     <style>
         .sanDaDat {

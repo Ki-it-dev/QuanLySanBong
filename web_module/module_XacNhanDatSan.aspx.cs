@@ -17,22 +17,29 @@ public partial class web_module_module_XacNhanDatSan : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            string _idSan = Context.Items["_idSan"].ToString();
-            string _idGio = Context.Items["_idGio"].ToString();
+            if(Context.Items["_idSan"] == null && Context.Items["_idGio"] == null)
+            {
+                Response.Redirect("/trang-chu");
+            }
+            else
+            {
+                string _idSan = Context.Items["_idSan"].ToString();
+                string _idGio = Context.Items["_idGio"].ToString();
 
-            txtIdGio.Value = _idGio;
-            txtIdSan.Value = _idSan;
+                txtIdGio.Value = _idGio;
+                txtIdSan.Value = _idSan;
 
-            var getUser = from u in db.tbUsers where u.users_account == Request.Cookies["UserName"].Value select u.users_fullname;
-            var getSan = from s in db.tbFields where s.field_id == Convert.ToInt32(_idSan) select s.field_name;
-            var getTimeDetail = from t in db.tbBookTimes where t.book_time_id == Convert.ToInt32(_idGio) select t.book_time_detail;
-            var getPrice = from p in db.tbPrices where p.book_time_id == Convert.ToInt32(_idGio) select p.price;
+                var getUser = from u in db.tbUsers where u.users_account == Request.Cookies["UserName"].Value select u.users_fullname;
+                var getSan = from s in db.tbFields where s.field_id == Convert.ToInt32(_idSan) select s.field_name;
+                var getTimeDetail = from t in db.tbBookTimes where t.book_time_id == Convert.ToInt32(_idGio) select t.book_time_detail;
+                var getPrice = from p in db.tbPrices where p.book_time_id == Convert.ToInt32(_idGio) select p.price;
 
-            txtDateTimeNow = DateTime.Now.ToString();
-            field_name = getSan.FirstOrDefault();
-            book_time_detail = getTimeDetail.FirstOrDefault();
-            txtusers_fullname = getUser.FirstOrDefault();
-            price = getPrice.FirstOrDefault().ToString();
+                txtDateTimeNow = DateTime.Now.ToString();
+                field_name = getSan.FirstOrDefault();
+                book_time_detail = getTimeDetail.FirstOrDefault();
+                txtusers_fullname = getUser.FirstOrDefault();
+                price = getPrice.FirstOrDefault().ToString();
+            }
         }
         loadata();
     }

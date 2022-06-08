@@ -10,44 +10,56 @@ public partial class web_module_module_TimKiem : System.Web.UI.Page
     dbcsdlDataContext db = new dbcsdlDataContext();
     cls_Alert alert = new cls_Alert();
 
-    protected string txtDateTImeNow, styleNone;
+    protected string txtDateTImeNow, styleNone, noneSp, noneSan;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            string _idSan = Context.Items["idSan"].ToString();
-            string _idDoUong = Context.Items["idDoUong"].ToString();
-            string _idGiay = Context.Items["idGiay"].ToString();
-            string _idQuanAo = Context.Items["idQuanAo"].ToString();
+            string _idSan, _idDoUong, _idGiay, _idQuanAo;
 
-            txtIdSanTimKiem.Value = _idSan;
-            txtIdDoUongTimKiem.Value = _idDoUong;
-            txtIdGiayTimKiem.Value = _idGiay;
-            txtIdQuanAoTimKiem.Value = _idQuanAo;
-
-            if (_idSan != null)
+            if(Context.Items["idSan"] == null 
+                && Context.Items["idDoUong"] == null
+                && Context.Items["idGiay"] == null
+                && Context.Items["idQuanAo"] == null)
             {
-                loadDSSan();
-            }
-            if(_idDoUong != null)
-            {
-                loadSanPham("1");
-            }
-            if (_idGiay != null)
-            {
-                loadSanPham("3");
-            }
-            if (_idQuanAo != null)
-            {
-                loadSanPham("2");
-            }
-            if(_idDoUong == "" && _idGiay == "" && _idQuanAo == "" && _idSan == "")
-            {
-                styleNone = "display:block";
+                Response.Redirect("/trang-chu");
             }
             else
             {
-                styleNone = "display:none";
+                _idSan = Context.Items["idSan"].ToString();
+                _idDoUong = Context.Items["idDoUong"].ToString();
+                _idGiay = Context.Items["idGiay"].ToString();
+                _idQuanAo = Context.Items["idQuanAo"].ToString();
+
+                txtIdSanTimKiem.Value = _idSan;
+                txtIdDoUongTimKiem.Value = _idDoUong;
+                txtIdGiayTimKiem.Value = _idGiay;
+                txtIdQuanAoTimKiem.Value = _idQuanAo;
+
+                if (_idSan != "")
+                {
+                    loadDSSan(); noneSp = "display:none";
+                }
+                if (_idDoUong != "")
+                {
+                    loadSanPham("1"); noneSan = "display:none"; noneSp = "display:block";
+                }
+                if (_idGiay != "")
+                {
+                    loadSanPham("3");
+                }
+                if (_idQuanAo != "")
+                {
+                    loadSanPham("2");
+                }
+                if (_idDoUong == "" && _idGiay == "" && _idQuanAo == "" && _idSan == "")
+                {
+                    styleNone = "display:block"; noneSan = "display:none"; noneSp = "display:none";
+                }
+                else
+                {
+                    styleNone = "display:none";
+                }
             }
         }
         txtDateTImeNow = DateTime.Now.ToString("dd/MM/yyyy");
@@ -64,7 +76,7 @@ public partial class web_module_module_TimKiem : System.Web.UI.Page
         var getQuanAo = from qa in db.tbClothes where arrIdQuanAoTK.Contains(qa.clothes_id.ToString()) select qa;
         var getGiay = from g in db.tbShoes where arrIdGiayTK.Contains(g.shoes_id.ToString()) select g;
 
-        if(sanPham == "1")
+        if (sanPham == "1")
         {
             //Danh sach do uong
             rpDoUong.DataSource = getDoUong;

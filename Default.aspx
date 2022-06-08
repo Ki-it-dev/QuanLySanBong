@@ -181,7 +181,7 @@
                 </div>
                 <div class="d-flex justify-content-end">
                     <div class="p-2" style="margin-top: 20px">
-                        <a href="#san3" style="padding: 10px; text-decoration: none; border: solid 1px greenyellow; border-radius: 40px; color: navajowhite; font-family: emoji; font-style: italic; font-size: medium;">ĐẶT NGAY
+                        <a href="/danh-sach-san" style="padding: 10px; text-decoration: none; border: solid 1px greenyellow; border-radius: 40px; color: navajowhite; font-family: emoji; font-style: italic; font-size: medium;">ĐẶT NGAY
                         </a>
                     </div>
                 </div>

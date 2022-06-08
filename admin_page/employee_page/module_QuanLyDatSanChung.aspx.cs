@@ -36,8 +36,6 @@ public partial class admin_page_employee_page_module_QuanLyDatSanChung : System.
             Response.Redirect("/trang-chu");
         }
     }
-
-
     protected void loadData()
     {
         var getData = (from f in db.tbFields

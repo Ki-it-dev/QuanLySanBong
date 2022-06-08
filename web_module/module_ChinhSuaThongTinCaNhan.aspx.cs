@@ -55,9 +55,19 @@ public partial class web_module_module_ChinhSuaThongTinCaNhan : System.Web.UI.Pa
     protected void btnChinhSua_ServerClick(object sender, EventArgs e)
     {
         //Kiem tra tai khoan
-        var getAccount = from u in db.tbUsers select u;
+        var getAccount = from u in db.tbUsers where u.users_account != Request.Cookies["UserName"].Value select u;
+
         var getUser = (from u in db.tbUsers
                        where u.users_account == Request.Cookies["UserName"].Value select u);
+
+        txtCheckCMND.Value = string.Join(",", getAccount.Select(x => x.users_identity));
+        string[] arrCMND = txtCheckCMND.Value.Split(',');
+
+        txtCheckAccount.Value = string.Join(",", getAccount.Select(x => x.users_account));
+        string[] arrAcc = txtCheckCMND.Value.Split(',');
+
+        txtCheckPhone.Value = string.Join(",", getAccount.Select(x => x.users_phoneNumber));
+        string[] arrPhone = txtCheckCMND.Value.Split(',');
 
         if (txtTaiKhoan.Value == "" ||
             txtEmail.Value == "" ||
@@ -82,20 +92,23 @@ public partial class web_module_module_ChinhSuaThongTinCaNhan : System.Web.UI.Pa
         }
         if (getAccount.Count() > 0)
         {
-            if (txtTaiKhoan.Value == getAccount.First().users_account)
+            for (int i = 0; i < arrAcc.Length; i++)
             {
-                alert.alert_Warning(Page, "Tài khoản đã tồn tại", "");
-                return;
-            }
-            if (txtCMND.Value == getAccount.First().users_identity)
-            {
-                alert.alert_Warning(Page, "CMND đã tồn tại", "");
-                return;
-            }
-            if (txtPhone.Value == getAccount.First().users_phoneNumber)
-            {
-                alert.alert_Warning(Page, "Số điện thoại đã tồn tại", "");
-                return;
+                if (txtTaiKhoan.Value == arrAcc[i])
+                {
+                    alert.alert_Warning(Page, "Tài khoản đã tồn tại", "");
+                    return;
+                }
+                if (txtCMND.Value == arrCMND[i])
+                {
+                    alert.alert_Warning(Page, "CMND đã tồn tại", "");
+                    return;
+                }
+                if (txtPhone.Value == arrPhone[i])
+                {
+                    alert.alert_Warning(Page, "Số điện thoại đã tồn tại", "");
+                    return;
+                }
             }
         }
 
@@ -109,7 +122,7 @@ public partial class web_module_module_ChinhSuaThongTinCaNhan : System.Web.UI.Pa
         update.users_phoneNumber = txtPhone.Value;
 
         db.SubmitChanges();
-
+        loadData();
         alert.alert_Success(Page, "Cập nhật thành công", "");
     }
 }
