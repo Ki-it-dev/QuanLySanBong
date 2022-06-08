@@ -59,6 +59,7 @@
                 </div>
             </div>
         </div>
+        <div style="padding:8%;"></div>
     </div>
 
     <a href="#" id="btnXoaServer" runat="server" onserverclick="btnXoaServer_ServerClick"></a>

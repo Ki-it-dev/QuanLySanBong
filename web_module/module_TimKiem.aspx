@@ -11,20 +11,12 @@
     <link href="../css/cssModule/qldsc.css" rel="stylesheet" type="text/css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <div style="<%=styleNone%>">
+        <h1 style="color: greenyellow;padding-top: 25%; text-align:center;">Không tìm thấy dữ liệu</h1></div>
+
     <div id="sanpham">
         <div class="container-fluid" style="padding-top: 8%;">
             <div class="d-flex justify-content-between">
-                <%--<div class="d-flex align-items-start">
-                    <h1>Sản Phẩm</h1>
-                </div>--%>
-                <%-- <div class="d-flex align-items-end">
-                    <asp:DropDownList ID="ddlSanPham" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSanPham_SelectedIndexChanged" class="dropdown">
-                        <asp:ListItem>Tất cả</asp:ListItem>
-                        <asp:ListItem>Nước giải khát</asp:ListItem>
-                        <asp:ListItem>Áo quần</asp:ListItem>
-                        <asp:ListItem>Giày dép</asp:ListItem>
-                    </asp:DropDownList>
-                </div>--%>
             </div>
             <div class="card-deck">
                 <div class="container-fluid">
@@ -39,11 +31,10 @@
                                                 <div class=" p-2">
                                                     <h4 class="card-title"><%#Eval("clothes_name") %></h4>
                                                 </div>
-                                                <div class=" p-2">
-                                                    <h4 class="card-title"><%#Eval("clothes_size") %></h4>
-                                                </div>
-                                                <div class=" p-2">
-                                                    <h4 class="card-title"><%#Eval("clothes_color") %></h4>
+                                                <div class="d-flex">
+                                                    <div class="p-2"><h6 class="card-title"><%#Eval("clothes_size") %> </h6></div>
+                                                    <div class="p-2"></div>
+                                                    <div class="p-2"><h6 class="card-title"> <%#Eval("clothes_color") %></h6></div>
                                                 </div>
                                                 <div class="p-2">
                                                     <p class="card-text"><%#Eval("clothes_description") %></p>
@@ -72,11 +63,10 @@
                                                 <div class="p-2">
                                                     <h4 class="card-title"><%#Eval("shoes_name") %></h4>
                                                 </div>
-                                                <div class="p-2">
-                                                    <h4 class="card-title"><%#Eval("shoes_size") %></h4>
-                                                </div>
-                                                <div class="p-2">
-                                                    <h4 class="card-title"><%#Eval("shoes_color") %></h4>
+                                                <div class="d-flex">
+                                                    <div class="p-2"><h6 class="card-title"><%#Eval("shoes_size") %></h6></div>
+                                                    <div class="p-2"></div>
+                                                    <div class="p-2"><h6 class="card-title"><%#Eval("shoes_color") %></h6></div>
                                                 </div>
                                                 <div class="p-2">
                                                     <p class="card-text"><%#Eval("shoes_description") %></p>
@@ -126,6 +116,7 @@
                 </div>
             </div>
         </div>
+        <div style="padding:8%;"></div>
     </div>
 
     <div id="san3">
@@ -182,11 +173,10 @@
             <input type="text" runat="server" id="txtIdQuanAoTimKiem" name="name" value="" />
 
         </div>
+        <div style="padding:8%;"></div>
     </div>
 
-    <div style="<%=styleNone%>">
-        <h1 style="color:#000;">Không có sản phẩm tìm kiếm</h1>
-    </div>
+    
 
     <style>
         .sanDaDat {
@@ -235,5 +225,6 @@
             }
         })
     </script>
+
 </asp:Content>
 

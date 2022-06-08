@@ -13,8 +13,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div id="qlttcn">
         <div class="khoangcach">
-            <h1>THÔNG TIN CÁ NHÂN</h1>
-            <div class="d-flex justify-content-center">
+            <h2 style="color:white">THÔNG TIN CÁ NHÂN</h2>
+            <div class="d-flex justify-content-start">
                 <section class="xn" style="padding: 20px 30px;">
                     <div class="d-flex flex-column">
                         <div class="p-2">
@@ -65,6 +65,7 @@
 
                 </section>
             </div>
+            <div style="padding:8%;"></div>
         </div>
     </div>
 </asp:Content>

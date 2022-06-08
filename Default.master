@@ -104,9 +104,14 @@
                             <a class="nav-link" style="<%=adminNone%>;<%=styleNone%>" href="/quan-ly-tai-khoan">Quản lý tài khoản chung</a>
                         </li>
                     </ul>
-                    <input class="form-control mr-sm-2 col-lg-4" type="search"  id="txtTimKiem" runat="server" 
-                        placeholder="Nhập sân hoặc sản phẩm bất kỳ..." aria-label="search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" id="btnTimKiem" runat="server" onserverclick="btnTimKiem_ServerClick" type="submit">Tìm Kiếm</button>
+
+                    <div class="col-lg-2 col-md-1 col-sm-1">
+                      <div class="container-4">
+                          <input class="form-control mr-sm-2" type="search"  id="txtTimKiem" runat="server" 
+                                            placeholder="Nhập sân hoặc sản phẩm bất kỳ..." aria-label="search"/>
+                          <button class="icon" id="btnTimKiem" runat="server" onserverclick="btnTimKiem_ServerClick" type="submit"><i style="" class="fa-brands fa-searchengin"></i></button>
+                      </div>
+                    </div>
 
                     <ul class="navbar-nav ml-auto">
 

@@ -1,11 +1,10 @@
 
-#san3, #san5, #san7 {
-    background-image: url('../../images/SanBong/TrangChu/san.jpg');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+#san3 {
+    background-image: url('../../images/SanBong/background/bg15.jpg');
+    background-size: 50%;
 }
 
-    #san3 .container a, #san5 .container a, #san7 .container a {
+    #san3 .container a {
         border: solid 3px yellowgreen;
         background-color: cornsilk;
         color: black;
@@ -15,7 +14,7 @@
         padding: 5px;
     }
 
-    #san3 .container h3, #san5 .container h3, #san7 .container h3 {
+    #san3 .container h3 {
         color: greenyellow;
     }
 

@@ -41,12 +41,7 @@
                         <div class="p-2">
                             <p>Họ và tên : <%=txtusers_fullname%></p>
                         </div>
-                        <%--<div class="p-2">
-                                    <p>Tích điểm     : </p>
-                                </div>
-                                <div class="p-2">
-                                    <p>Giảm giá      : </p>
-                                </div>--%>
+
                         <div class="p-2">
                             <div class="d-flex flex-row-reverse">
                                 <div class="p-2">
@@ -66,10 +61,11 @@
                 </section>
             </div>
 
-            <input type="text" id="txtIdSan" runat="server" name="name" value="" hidden/>
-            <input type="text" id="txtIdGio" runat="server" name="name" value="" hidden/>
+            <input type="text" id="txtIdSan" runat="server" name="name" value="" hidden />
+            <input type="text" id="txtIdGio" runat="server" name="name" value="" hidden />
 
         </div>
+        <div style="padding:8%;"></div>
     </div>
 </asp:Content>
 

@@ -37,6 +37,7 @@
                 </asp:Repeater>
             </div>
         </div>
+        <div style="padding:8%;"></div>
     </div>
     <a href="#" id="btnHuy" runat="server" onserverclick="btnHuy_ServerClick"></a>
     <div style="display:none;">
