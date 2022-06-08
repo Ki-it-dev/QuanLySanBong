@@ -10,13 +10,14 @@
     <link href="../css/cssModule/xndsc.css" rel="stylesheet" type="text/css">
     <link href="../css/cssModule/qldsc.css" rel="stylesheet" type="text/css">
 
-     <style>
+    <style>
         .sanDaDat {
             background: red !important;
             color: #fff !important;
             font-weight: 600;
             pointer-events: none;
         }
+
         .sanCho {
             background: yellow !important;
             color: #000 !important;
@@ -27,8 +28,8 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-            <div id="san3">
-    <div class="container-fluid" style="padding-top: 8%;">
+    <div id="san3">
+        <div class="container-fluid" style="padding-top: 8%;">
             <div class="container">
                 <div class="row">
                     <asp:Repeater runat="server" ID="rpDanhSachSan" OnItemDataBound="rpDanhSachSan_ItemDataBound">
@@ -77,7 +78,7 @@
         </div>
     </div>
 
-   
+
 
     <script>
 

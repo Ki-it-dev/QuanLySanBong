@@ -42,6 +42,8 @@
                                             <div class="card-body">
                                                 <div class="d-flex align-items-center flex-column" style="height: 200px;">
                                                 <div class=" p-2"><h4 class="card-title"><%#Eval("clothes_name") %></h4></div>
+                                                <div class=" p-2"><h4 class="card-title"><%#Eval("clothes_size") %></h4></div>
+                                                <div class=" p-2"><h4 class="card-title"><%#Eval("clothes_color") %></h4></div>
                                                 <div class="p-2"><p class="card-text"><%#Eval("clothes_description") %></p></div>
                                                 <div class="mt-auto p-2"><h6><%#Eval("clothes_price","{0:0,00}") %> VNĐ</h6></div>
                                                     </div>
@@ -63,6 +65,8 @@
                                             <div class="card-body">
                                                 <div class="d-flex align-items-center flex-column" style="height: 200px;">
                                                 <div class="p-2"><h4 class="card-title"><%#Eval("shoes_name") %></h4></div>
+                                                <div class="p-2"><h4 class="card-title"><%#Eval("shoes_size") %></h4></div>
+                                                <div class="p-2"><h4 class="card-title"><%#Eval("shoes_color") %></h4></div>
                                                 <div class="p-2"><p class="card-text"><%#Eval("shoes_description") %></p></div>
                                                 <div class="mt-auto p-2"><h6><%#Eval("shoes_price","{0:0,00}") %> VNĐ</h6></div>
                                                     </div>

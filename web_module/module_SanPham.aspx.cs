@@ -26,9 +26,6 @@ public partial class web_module_module_SanPham : System.Web.UI.Page
         var getDoUong = from du in db.tbDrinks select du;
         var getQuanAo = from qa in db.tbClothes select qa;
         var getGiay = from g in db.tbShoes select g;
-        //var getAll = from 
-
-        //rpAll.DataSource = getAll;
 
         //Danh sach do uong
         rpDoUong.DataSource = getDoUong;

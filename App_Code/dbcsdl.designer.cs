@@ -32,9 +32,9 @@ public partial class dbcsdlDataContext : System.Data.Linq.DataContext
   partial void InserttbBill(tbBill instance);
   partial void UpdatetbBill(tbBill instance);
   partial void DeletetbBill(tbBill instance);
-  partial void InserttbUser(tbUser instance);
-  partial void UpdatetbUser(tbUser instance);
-  partial void DeletetbUser(tbUser instance);
+  partial void InserttbTransaction(tbTransaction instance);
+  partial void UpdatetbTransaction(tbTransaction instance);
+  partial void DeletetbTransaction(tbTransaction instance);
   partial void InserttbBookTime(tbBookTime instance);
   partial void UpdatetbBookTime(tbBookTime instance);
   partial void DeletetbBookTime(tbBookTime instance);
@@ -65,13 +65,13 @@ public partial class dbcsdlDataContext : System.Data.Linq.DataContext
   partial void InserttbTempTransactionCustomer(tbTempTransactionCustomer instance);
   partial void UpdatetbTempTransactionCustomer(tbTempTransactionCustomer instance);
   partial void DeletetbTempTransactionCustomer(tbTempTransactionCustomer instance);
-  partial void InserttbTransaction(tbTransaction instance);
-  partial void UpdatetbTransaction(tbTransaction instance);
-  partial void DeletetbTransaction(tbTransaction instance);
+  partial void InserttbUser(tbUser instance);
+  partial void UpdatetbUser(tbUser instance);
+  partial void DeletetbUser(tbUser instance);
   #endregion
 	
 	public dbcsdlDataContext() : 
-			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["dbQLSBConnectionString2"].ConnectionString, mappingSource)
+			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["dbQLSBConnectionString1"].ConnectionString, mappingSource)
 	{
 		OnCreated();
 	}
@@ -108,11 +108,11 @@ public partial class dbcsdlDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<tbUser> tbUsers
+	public System.Data.Linq.Table<tbTransaction> tbTransactions
 	{
 		get
 		{
-			return this.GetTable<tbUser>();
+			return this.GetTable<tbTransaction>();
 		}
 	}
 	
@@ -196,11 +196,11 @@ public partial class dbcsdlDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<tbTransaction> tbTransactions
+	public System.Data.Linq.Table<tbUser> tbUsers
 	{
 		get
 		{
-			return this.GetTable<tbTransaction>();
+			return this.GetTable<tbUser>();
 		}
 	}
 }
@@ -229,13 +229,13 @@ public partial class tbBill : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private System.Nullable<System.DateTime> _date_create;
 	
-	private EntityRef<tbUser> _tbUser;
-	
 	private EntityRef<tbClothe> _tbClothe;
 	
 	private EntityRef<tbDrink> _tbDrink;
 	
 	private EntityRef<tbShoe> _tbShoe;
+	
+	private EntityRef<tbUser> _tbUser;
 	
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -263,10 +263,10 @@ public partial class tbBill : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	public tbBill()
 	{
-		this._tbUser = default(EntityRef<tbUser>);
 		this._tbClothe = default(EntityRef<tbClothe>);
 		this._tbDrink = default(EntityRef<tbDrink>);
 		this._tbShoe = default(EntityRef<tbShoe>);
+		this._tbUser = default(EntityRef<tbUser>);
 		OnCreated();
 	}
 	
@@ -466,40 +466,6 @@ public partial class tbBill : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbUser_tbBill", Storage="_tbUser", ThisKey="users_id", OtherKey="users_id", IsForeignKey=true)]
-	public tbUser tbUser
-	{
-		get
-		{
-			return this._tbUser.Entity;
-		}
-		set
-		{
-			tbUser previousValue = this._tbUser.Entity;
-			if (((previousValue != value) 
-						|| (this._tbUser.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._tbUser.Entity = null;
-					previousValue.tbBills.Remove(this);
-				}
-				this._tbUser.Entity = value;
-				if ((value != null))
-				{
-					value.tbBills.Add(this);
-					this._users_id = value.users_id;
-				}
-				else
-				{
-					this._users_id = default(Nullable<int>);
-				}
-				this.SendPropertyChanged("tbUser");
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbClothe_tbBill", Storage="_tbClothe", ThisKey="clothes_id", OtherKey="clothes_id", IsForeignKey=true)]
 	public tbClothe tbClothe
 	{
@@ -602,6 +568,40 @@ public partial class tbBill : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbUser_tbBill", Storage="_tbUser", ThisKey="users_id", OtherKey="users_id", IsForeignKey=true)]
+	public tbUser tbUser
+	{
+		get
+		{
+			return this._tbUser.Entity;
+		}
+		set
+		{
+			tbUser previousValue = this._tbUser.Entity;
+			if (((previousValue != value) 
+						|| (this._tbUser.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._tbUser.Entity = null;
+					previousValue.tbBills.Remove(this);
+				}
+				this._tbUser.Entity = value;
+				if ((value != null))
+				{
+					value.tbBills.Add(this);
+					this._users_id = value.users_id;
+				}
+				else
+				{
+					this._users_id = default(Nullable<int>);
+				}
+				this.SendPropertyChanged("tbUser");
+			}
+		}
+	}
+	
 	public event PropertyChangingEventHandler PropertyChanging;
 	
 	public event PropertyChangedEventHandler PropertyChanged;
@@ -623,348 +623,180 @@ public partial class tbBill : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbUsers")]
-public partial class tbUser : INotifyPropertyChanging, INotifyPropertyChanged
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbTransaction")]
+public partial class tbTransaction : INotifyPropertyChanging, INotifyPropertyChanged
 {
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
-	private int _users_id;
+	private int _transaction_id;
 	
-	private string _users_fullname;
+	private System.Nullable<int> _temp_transaction_id;
 	
-	private string _users_phoneNumber;
+	private System.Nullable<int> _transaction_status;
 	
-	private string _users_email;
+	private System.Nullable<System.DateTime> _transaction_datetime;
 	
-	private string _users_address;
+	private System.Nullable<decimal> _price;
 	
-	private string _users_identity;
-	
-	private string _users_account;
-	
-	private string _users_password;
-	
-	private System.Nullable<int> _group_user_id;
-	
-	private System.Nullable<bool> _users_status;
-	
-	private EntitySet<tbBill> _tbBills;
-	
-	private EntitySet<tbTempTransactionAdmin> _tbTempTransactionAdmins;
-	
-	private EntitySet<tbTempTransactionCustomer> _tbTempTransactionCustomers;
-	
-	private EntityRef<tbGroupUser> _tbGroupUser;
+	private EntityRef<tbTempTransactionAdmin> _tbTempTransactionAdmin;
 	
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onusers_idChanging(int value);
-    partial void Onusers_idChanged();
-    partial void Onusers_fullnameChanging(string value);
-    partial void Onusers_fullnameChanged();
-    partial void Onusers_phoneNumberChanging(string value);
-    partial void Onusers_phoneNumberChanged();
-    partial void Onusers_emailChanging(string value);
-    partial void Onusers_emailChanged();
-    partial void Onusers_addressChanging(string value);
-    partial void Onusers_addressChanged();
-    partial void Onusers_identityChanging(string value);
-    partial void Onusers_identityChanged();
-    partial void Onusers_accountChanging(string value);
-    partial void Onusers_accountChanged();
-    partial void Onusers_passwordChanging(string value);
-    partial void Onusers_passwordChanged();
-    partial void Ongroup_user_idChanging(System.Nullable<int> value);
-    partial void Ongroup_user_idChanged();
-    partial void Onusers_statusChanging(System.Nullable<bool> value);
-    partial void Onusers_statusChanged();
+    partial void Ontransaction_idChanging(int value);
+    partial void Ontransaction_idChanged();
+    partial void Ontemp_transaction_idChanging(System.Nullable<int> value);
+    partial void Ontemp_transaction_idChanged();
+    partial void Ontransaction_statusChanging(System.Nullable<int> value);
+    partial void Ontransaction_statusChanged();
+    partial void Ontransaction_datetimeChanging(System.Nullable<System.DateTime> value);
+    partial void Ontransaction_datetimeChanged();
+    partial void OnpriceChanging(System.Nullable<decimal> value);
+    partial void OnpriceChanged();
     #endregion
 	
-	public tbUser()
+	public tbTransaction()
 	{
-		this._tbBills = new EntitySet<tbBill>(new Action<tbBill>(this.attach_tbBills), new Action<tbBill>(this.detach_tbBills));
-		this._tbTempTransactionAdmins = new EntitySet<tbTempTransactionAdmin>(new Action<tbTempTransactionAdmin>(this.attach_tbTempTransactionAdmins), new Action<tbTempTransactionAdmin>(this.detach_tbTempTransactionAdmins));
-		this._tbTempTransactionCustomers = new EntitySet<tbTempTransactionCustomer>(new Action<tbTempTransactionCustomer>(this.attach_tbTempTransactionCustomers), new Action<tbTempTransactionCustomer>(this.detach_tbTempTransactionCustomers));
-		this._tbGroupUser = default(EntityRef<tbGroupUser>);
+		this._tbTempTransactionAdmin = default(EntityRef<tbTempTransactionAdmin>);
 		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int users_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_transaction_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int transaction_id
 	{
 		get
 		{
-			return this._users_id;
+			return this._transaction_id;
 		}
 		set
 		{
-			if ((this._users_id != value))
+			if ((this._transaction_id != value))
 			{
-				this.Onusers_idChanging(value);
+				this.Ontransaction_idChanging(value);
 				this.SendPropertyChanging();
-				this._users_id = value;
-				this.SendPropertyChanged("users_id");
-				this.Onusers_idChanged();
+				this._transaction_id = value;
+				this.SendPropertyChanged("transaction_id");
+				this.Ontransaction_idChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_fullname", DbType="NVarChar(MAX)")]
-	public string users_fullname
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_temp_transaction_id", DbType="Int")]
+	public System.Nullable<int> temp_transaction_id
 	{
 		get
 		{
-			return this._users_fullname;
+			return this._temp_transaction_id;
 		}
 		set
 		{
-			if ((this._users_fullname != value))
+			if ((this._temp_transaction_id != value))
 			{
-				this.Onusers_fullnameChanging(value);
-				this.SendPropertyChanging();
-				this._users_fullname = value;
-				this.SendPropertyChanged("users_fullname");
-				this.Onusers_fullnameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_phoneNumber", DbType="VarChar(13)")]
-	public string users_phoneNumber
-	{
-		get
-		{
-			return this._users_phoneNumber;
-		}
-		set
-		{
-			if ((this._users_phoneNumber != value))
-			{
-				this.Onusers_phoneNumberChanging(value);
-				this.SendPropertyChanging();
-				this._users_phoneNumber = value;
-				this.SendPropertyChanged("users_phoneNumber");
-				this.Onusers_phoneNumberChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_email", DbType="NVarChar(50)")]
-	public string users_email
-	{
-		get
-		{
-			return this._users_email;
-		}
-		set
-		{
-			if ((this._users_email != value))
-			{
-				this.Onusers_emailChanging(value);
-				this.SendPropertyChanging();
-				this._users_email = value;
-				this.SendPropertyChanged("users_email");
-				this.Onusers_emailChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_address", DbType="NVarChar(MAX)")]
-	public string users_address
-	{
-		get
-		{
-			return this._users_address;
-		}
-		set
-		{
-			if ((this._users_address != value))
-			{
-				this.Onusers_addressChanging(value);
-				this.SendPropertyChanging();
-				this._users_address = value;
-				this.SendPropertyChanged("users_address");
-				this.Onusers_addressChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_identity", DbType="VarChar(13)")]
-	public string users_identity
-	{
-		get
-		{
-			return this._users_identity;
-		}
-		set
-		{
-			if ((this._users_identity != value))
-			{
-				this.Onusers_identityChanging(value);
-				this.SendPropertyChanging();
-				this._users_identity = value;
-				this.SendPropertyChanged("users_identity");
-				this.Onusers_identityChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_account", DbType="VarChar(MAX)")]
-	public string users_account
-	{
-		get
-		{
-			return this._users_account;
-		}
-		set
-		{
-			if ((this._users_account != value))
-			{
-				this.Onusers_accountChanging(value);
-				this.SendPropertyChanging();
-				this._users_account = value;
-				this.SendPropertyChanged("users_account");
-				this.Onusers_accountChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_password", DbType="VarChar(MAX)")]
-	public string users_password
-	{
-		get
-		{
-			return this._users_password;
-		}
-		set
-		{
-			if ((this._users_password != value))
-			{
-				this.Onusers_passwordChanging(value);
-				this.SendPropertyChanging();
-				this._users_password = value;
-				this.SendPropertyChanged("users_password");
-				this.Onusers_passwordChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_group_user_id", DbType="Int")]
-	public System.Nullable<int> group_user_id
-	{
-		get
-		{
-			return this._group_user_id;
-		}
-		set
-		{
-			if ((this._group_user_id != value))
-			{
-				if (this._tbGroupUser.HasLoadedOrAssignedValue)
+				if (this._tbTempTransactionAdmin.HasLoadedOrAssignedValue)
 				{
 					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 				}
-				this.Ongroup_user_idChanging(value);
+				this.Ontemp_transaction_idChanging(value);
 				this.SendPropertyChanging();
-				this._group_user_id = value;
-				this.SendPropertyChanged("group_user_id");
-				this.Ongroup_user_idChanged();
+				this._temp_transaction_id = value;
+				this.SendPropertyChanged("temp_transaction_id");
+				this.Ontemp_transaction_idChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_status", DbType="Bit")]
-	public System.Nullable<bool> users_status
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_transaction_status", DbType="Int")]
+	public System.Nullable<int> transaction_status
 	{
 		get
 		{
-			return this._users_status;
+			return this._transaction_status;
 		}
 		set
 		{
-			if ((this._users_status != value))
+			if ((this._transaction_status != value))
 			{
-				this.Onusers_statusChanging(value);
+				this.Ontransaction_statusChanging(value);
 				this.SendPropertyChanging();
-				this._users_status = value;
-				this.SendPropertyChanged("users_status");
-				this.Onusers_statusChanged();
+				this._transaction_status = value;
+				this.SendPropertyChanged("transaction_status");
+				this.Ontransaction_statusChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbUser_tbBill", Storage="_tbBills", ThisKey="users_id", OtherKey="users_id")]
-	public EntitySet<tbBill> tbBills
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_transaction_datetime", DbType="DateTime")]
+	public System.Nullable<System.DateTime> transaction_datetime
 	{
 		get
 		{
-			return this._tbBills;
+			return this._transaction_datetime;
 		}
 		set
 		{
-			this._tbBills.Assign(value);
+			if ((this._transaction_datetime != value))
+			{
+				this.Ontransaction_datetimeChanging(value);
+				this.SendPropertyChanging();
+				this._transaction_datetime = value;
+				this.SendPropertyChanged("transaction_datetime");
+				this.Ontransaction_datetimeChanged();
+			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbUser_tbTempTransactionAdmin", Storage="_tbTempTransactionAdmins", ThisKey="users_id", OtherKey="users_id")]
-	public EntitySet<tbTempTransactionAdmin> tbTempTransactionAdmins
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="Money")]
+	public System.Nullable<decimal> price
 	{
 		get
 		{
-			return this._tbTempTransactionAdmins;
+			return this._price;
 		}
 		set
 		{
-			this._tbTempTransactionAdmins.Assign(value);
+			if ((this._price != value))
+			{
+				this.OnpriceChanging(value);
+				this.SendPropertyChanging();
+				this._price = value;
+				this.SendPropertyChanged("price");
+				this.OnpriceChanged();
+			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbUser_tbTempTransactionCustomer", Storage="_tbTempTransactionCustomers", ThisKey="users_id", OtherKey="users_id")]
-	public EntitySet<tbTempTransactionCustomer> tbTempTransactionCustomers
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbTempTransactionAdmin_tbTransaction", Storage="_tbTempTransactionAdmin", ThisKey="temp_transaction_id", OtherKey="temp_transaction_id", IsForeignKey=true, DeleteRule="CASCADE")]
+	public tbTempTransactionAdmin tbTempTransactionAdmin
 	{
 		get
 		{
-			return this._tbTempTransactionCustomers;
+			return this._tbTempTransactionAdmin.Entity;
 		}
 		set
 		{
-			this._tbTempTransactionCustomers.Assign(value);
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbGroupUser_tbUser", Storage="_tbGroupUser", ThisKey="group_user_id", OtherKey="group_user_id", IsForeignKey=true, DeleteRule="CASCADE")]
-	public tbGroupUser tbGroupUser
-	{
-		get
-		{
-			return this._tbGroupUser.Entity;
-		}
-		set
-		{
-			tbGroupUser previousValue = this._tbGroupUser.Entity;
+			tbTempTransactionAdmin previousValue = this._tbTempTransactionAdmin.Entity;
 			if (((previousValue != value) 
-						|| (this._tbGroupUser.HasLoadedOrAssignedValue == false)))
+						|| (this._tbTempTransactionAdmin.HasLoadedOrAssignedValue == false)))
 			{
 				this.SendPropertyChanging();
 				if ((previousValue != null))
 				{
-					this._tbGroupUser.Entity = null;
-					previousValue.tbUsers.Remove(this);
+					this._tbTempTransactionAdmin.Entity = null;
+					previousValue.tbTransactions.Remove(this);
 				}
-				this._tbGroupUser.Entity = value;
+				this._tbTempTransactionAdmin.Entity = value;
 				if ((value != null))
 				{
-					value.tbUsers.Add(this);
-					this._group_user_id = value.group_user_id;
+					value.tbTransactions.Add(this);
+					this._temp_transaction_id = value.temp_transaction_id;
 				}
 				else
 				{
-					this._group_user_id = default(Nullable<int>);
+					this._temp_transaction_id = default(Nullable<int>);
 				}
-				this.SendPropertyChanged("tbGroupUser");
+				this.SendPropertyChanged("tbTempTransactionAdmin");
 			}
 		}
 	}
@@ -987,42 +819,6 @@ public partial class tbUser : INotifyPropertyChanging, INotifyPropertyChanged
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
-	}
-	
-	private void attach_tbBills(tbBill entity)
-	{
-		this.SendPropertyChanging();
-		entity.tbUser = this;
-	}
-	
-	private void detach_tbBills(tbBill entity)
-	{
-		this.SendPropertyChanging();
-		entity.tbUser = null;
-	}
-	
-	private void attach_tbTempTransactionAdmins(tbTempTransactionAdmin entity)
-	{
-		this.SendPropertyChanging();
-		entity.tbUser = this;
-	}
-	
-	private void detach_tbTempTransactionAdmins(tbTempTransactionAdmin entity)
-	{
-		this.SendPropertyChanging();
-		entity.tbUser = null;
-	}
-	
-	private void attach_tbTempTransactionCustomers(tbTempTransactionCustomer entity)
-	{
-		this.SendPropertyChanging();
-		entity.tbUser = this;
-	}
-	
-	private void detach_tbTempTransactionCustomers(tbTempTransactionCustomer entity)
-	{
-		this.SendPropertyChanging();
-		entity.tbUser = null;
 	}
 }
 
@@ -3191,180 +2987,348 @@ public partial class tbTempTransactionCustomer : INotifyPropertyChanging, INotif
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbTransaction")]
-public partial class tbTransaction : INotifyPropertyChanging, INotifyPropertyChanged
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbUsers")]
+public partial class tbUser : INotifyPropertyChanging, INotifyPropertyChanged
 {
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
-	private int _transaction_id;
+	private int _users_id;
 	
-	private System.Nullable<int> _temp_transaction_id;
+	private string _users_fullname;
 	
-	private System.Nullable<int> _transaction_status;
+	private string _users_phoneNumber;
 	
-	private System.Nullable<System.DateTime> _transaction_datetime;
+	private string _users_email;
 	
-	private System.Nullable<decimal> _price;
+	private string _users_address;
 	
-	private EntityRef<tbTempTransactionAdmin> _tbTempTransactionAdmin;
+	private string _users_identity;
+	
+	private string _users_account;
+	
+	private string _users_password;
+	
+	private System.Nullable<int> _group_user_id;
+	
+	private System.Nullable<bool> _users_status;
+	
+	private EntitySet<tbBill> _tbBills;
+	
+	private EntitySet<tbTempTransactionAdmin> _tbTempTransactionAdmins;
+	
+	private EntitySet<tbTempTransactionCustomer> _tbTempTransactionCustomers;
+	
+	private EntityRef<tbGroupUser> _tbGroupUser;
 	
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Ontransaction_idChanging(int value);
-    partial void Ontransaction_idChanged();
-    partial void Ontemp_transaction_idChanging(System.Nullable<int> value);
-    partial void Ontemp_transaction_idChanged();
-    partial void Ontransaction_statusChanging(System.Nullable<int> value);
-    partial void Ontransaction_statusChanged();
-    partial void Ontransaction_datetimeChanging(System.Nullable<System.DateTime> value);
-    partial void Ontransaction_datetimeChanged();
-    partial void OnpriceChanging(System.Nullable<decimal> value);
-    partial void OnpriceChanged();
+    partial void Onusers_idChanging(int value);
+    partial void Onusers_idChanged();
+    partial void Onusers_fullnameChanging(string value);
+    partial void Onusers_fullnameChanged();
+    partial void Onusers_phoneNumberChanging(string value);
+    partial void Onusers_phoneNumberChanged();
+    partial void Onusers_emailChanging(string value);
+    partial void Onusers_emailChanged();
+    partial void Onusers_addressChanging(string value);
+    partial void Onusers_addressChanged();
+    partial void Onusers_identityChanging(string value);
+    partial void Onusers_identityChanged();
+    partial void Onusers_accountChanging(string value);
+    partial void Onusers_accountChanged();
+    partial void Onusers_passwordChanging(string value);
+    partial void Onusers_passwordChanged();
+    partial void Ongroup_user_idChanging(System.Nullable<int> value);
+    partial void Ongroup_user_idChanged();
+    partial void Onusers_statusChanging(System.Nullable<bool> value);
+    partial void Onusers_statusChanged();
     #endregion
 	
-	public tbTransaction()
+	public tbUser()
 	{
-		this._tbTempTransactionAdmin = default(EntityRef<tbTempTransactionAdmin>);
+		this._tbBills = new EntitySet<tbBill>(new Action<tbBill>(this.attach_tbBills), new Action<tbBill>(this.detach_tbBills));
+		this._tbTempTransactionAdmins = new EntitySet<tbTempTransactionAdmin>(new Action<tbTempTransactionAdmin>(this.attach_tbTempTransactionAdmins), new Action<tbTempTransactionAdmin>(this.detach_tbTempTransactionAdmins));
+		this._tbTempTransactionCustomers = new EntitySet<tbTempTransactionCustomer>(new Action<tbTempTransactionCustomer>(this.attach_tbTempTransactionCustomers), new Action<tbTempTransactionCustomer>(this.detach_tbTempTransactionCustomers));
+		this._tbGroupUser = default(EntityRef<tbGroupUser>);
 		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_transaction_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int transaction_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int users_id
 	{
 		get
 		{
-			return this._transaction_id;
+			return this._users_id;
 		}
 		set
 		{
-			if ((this._transaction_id != value))
+			if ((this._users_id != value))
 			{
-				this.Ontransaction_idChanging(value);
+				this.Onusers_idChanging(value);
 				this.SendPropertyChanging();
-				this._transaction_id = value;
-				this.SendPropertyChanged("transaction_id");
-				this.Ontransaction_idChanged();
+				this._users_id = value;
+				this.SendPropertyChanged("users_id");
+				this.Onusers_idChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_temp_transaction_id", DbType="Int")]
-	public System.Nullable<int> temp_transaction_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_fullname", DbType="NVarChar(MAX)")]
+	public string users_fullname
 	{
 		get
 		{
-			return this._temp_transaction_id;
+			return this._users_fullname;
 		}
 		set
 		{
-			if ((this._temp_transaction_id != value))
+			if ((this._users_fullname != value))
 			{
-				if (this._tbTempTransactionAdmin.HasLoadedOrAssignedValue)
+				this.Onusers_fullnameChanging(value);
+				this.SendPropertyChanging();
+				this._users_fullname = value;
+				this.SendPropertyChanged("users_fullname");
+				this.Onusers_fullnameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_phoneNumber", DbType="VarChar(13)")]
+	public string users_phoneNumber
+	{
+		get
+		{
+			return this._users_phoneNumber;
+		}
+		set
+		{
+			if ((this._users_phoneNumber != value))
+			{
+				this.Onusers_phoneNumberChanging(value);
+				this.SendPropertyChanging();
+				this._users_phoneNumber = value;
+				this.SendPropertyChanged("users_phoneNumber");
+				this.Onusers_phoneNumberChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_email", DbType="NVarChar(50)")]
+	public string users_email
+	{
+		get
+		{
+			return this._users_email;
+		}
+		set
+		{
+			if ((this._users_email != value))
+			{
+				this.Onusers_emailChanging(value);
+				this.SendPropertyChanging();
+				this._users_email = value;
+				this.SendPropertyChanged("users_email");
+				this.Onusers_emailChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_address", DbType="NVarChar(MAX)")]
+	public string users_address
+	{
+		get
+		{
+			return this._users_address;
+		}
+		set
+		{
+			if ((this._users_address != value))
+			{
+				this.Onusers_addressChanging(value);
+				this.SendPropertyChanging();
+				this._users_address = value;
+				this.SendPropertyChanged("users_address");
+				this.Onusers_addressChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_identity", DbType="VarChar(13)")]
+	public string users_identity
+	{
+		get
+		{
+			return this._users_identity;
+		}
+		set
+		{
+			if ((this._users_identity != value))
+			{
+				this.Onusers_identityChanging(value);
+				this.SendPropertyChanging();
+				this._users_identity = value;
+				this.SendPropertyChanged("users_identity");
+				this.Onusers_identityChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_account", DbType="VarChar(MAX)")]
+	public string users_account
+	{
+		get
+		{
+			return this._users_account;
+		}
+		set
+		{
+			if ((this._users_account != value))
+			{
+				this.Onusers_accountChanging(value);
+				this.SendPropertyChanging();
+				this._users_account = value;
+				this.SendPropertyChanged("users_account");
+				this.Onusers_accountChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_password", DbType="VarChar(MAX)")]
+	public string users_password
+	{
+		get
+		{
+			return this._users_password;
+		}
+		set
+		{
+			if ((this._users_password != value))
+			{
+				this.Onusers_passwordChanging(value);
+				this.SendPropertyChanging();
+				this._users_password = value;
+				this.SendPropertyChanged("users_password");
+				this.Onusers_passwordChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_group_user_id", DbType="Int")]
+	public System.Nullable<int> group_user_id
+	{
+		get
+		{
+			return this._group_user_id;
+		}
+		set
+		{
+			if ((this._group_user_id != value))
+			{
+				if (this._tbGroupUser.HasLoadedOrAssignedValue)
 				{
 					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 				}
-				this.Ontemp_transaction_idChanging(value);
+				this.Ongroup_user_idChanging(value);
 				this.SendPropertyChanging();
-				this._temp_transaction_id = value;
-				this.SendPropertyChanged("temp_transaction_id");
-				this.Ontemp_transaction_idChanged();
+				this._group_user_id = value;
+				this.SendPropertyChanged("group_user_id");
+				this.Ongroup_user_idChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_transaction_status", DbType="Int")]
-	public System.Nullable<int> transaction_status
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_status", DbType="Bit")]
+	public System.Nullable<bool> users_status
 	{
 		get
 		{
-			return this._transaction_status;
+			return this._users_status;
 		}
 		set
 		{
-			if ((this._transaction_status != value))
+			if ((this._users_status != value))
 			{
-				this.Ontransaction_statusChanging(value);
+				this.Onusers_statusChanging(value);
 				this.SendPropertyChanging();
-				this._transaction_status = value;
-				this.SendPropertyChanged("transaction_status");
-				this.Ontransaction_statusChanged();
+				this._users_status = value;
+				this.SendPropertyChanged("users_status");
+				this.Onusers_statusChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_transaction_datetime", DbType="DateTime")]
-	public System.Nullable<System.DateTime> transaction_datetime
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbUser_tbBill", Storage="_tbBills", ThisKey="users_id", OtherKey="users_id")]
+	public EntitySet<tbBill> tbBills
 	{
 		get
 		{
-			return this._transaction_datetime;
+			return this._tbBills;
 		}
 		set
 		{
-			if ((this._transaction_datetime != value))
-			{
-				this.Ontransaction_datetimeChanging(value);
-				this.SendPropertyChanging();
-				this._transaction_datetime = value;
-				this.SendPropertyChanged("transaction_datetime");
-				this.Ontransaction_datetimeChanged();
-			}
+			this._tbBills.Assign(value);
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="Money")]
-	public System.Nullable<decimal> price
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbUser_tbTempTransactionAdmin", Storage="_tbTempTransactionAdmins", ThisKey="users_id", OtherKey="users_id")]
+	public EntitySet<tbTempTransactionAdmin> tbTempTransactionAdmins
 	{
 		get
 		{
-			return this._price;
+			return this._tbTempTransactionAdmins;
 		}
 		set
 		{
-			if ((this._price != value))
-			{
-				this.OnpriceChanging(value);
-				this.SendPropertyChanging();
-				this._price = value;
-				this.SendPropertyChanged("price");
-				this.OnpriceChanged();
-			}
+			this._tbTempTransactionAdmins.Assign(value);
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbTempTransactionAdmin_tbTransaction", Storage="_tbTempTransactionAdmin", ThisKey="temp_transaction_id", OtherKey="temp_transaction_id", IsForeignKey=true, DeleteRule="CASCADE")]
-	public tbTempTransactionAdmin tbTempTransactionAdmin
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbUser_tbTempTransactionCustomer", Storage="_tbTempTransactionCustomers", ThisKey="users_id", OtherKey="users_id")]
+	public EntitySet<tbTempTransactionCustomer> tbTempTransactionCustomers
 	{
 		get
 		{
-			return this._tbTempTransactionAdmin.Entity;
+			return this._tbTempTransactionCustomers;
 		}
 		set
 		{
-			tbTempTransactionAdmin previousValue = this._tbTempTransactionAdmin.Entity;
+			this._tbTempTransactionCustomers.Assign(value);
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbGroupUser_tbUser", Storage="_tbGroupUser", ThisKey="group_user_id", OtherKey="group_user_id", IsForeignKey=true, DeleteRule="CASCADE")]
+	public tbGroupUser tbGroupUser
+	{
+		get
+		{
+			return this._tbGroupUser.Entity;
+		}
+		set
+		{
+			tbGroupUser previousValue = this._tbGroupUser.Entity;
 			if (((previousValue != value) 
-						|| (this._tbTempTransactionAdmin.HasLoadedOrAssignedValue == false)))
+						|| (this._tbGroupUser.HasLoadedOrAssignedValue == false)))
 			{
 				this.SendPropertyChanging();
 				if ((previousValue != null))
 				{
-					this._tbTempTransactionAdmin.Entity = null;
-					previousValue.tbTransactions.Remove(this);
+					this._tbGroupUser.Entity = null;
+					previousValue.tbUsers.Remove(this);
 				}
-				this._tbTempTransactionAdmin.Entity = value;
+				this._tbGroupUser.Entity = value;
 				if ((value != null))
 				{
-					value.tbTransactions.Add(this);
-					this._temp_transaction_id = value.temp_transaction_id;
+					value.tbUsers.Add(this);
+					this._group_user_id = value.group_user_id;
 				}
 				else
 				{
-					this._temp_transaction_id = default(Nullable<int>);
+					this._group_user_id = default(Nullable<int>);
 				}
-				this.SendPropertyChanged("tbTempTransactionAdmin");
+				this.SendPropertyChanged("tbGroupUser");
 			}
 		}
 	}
@@ -3387,6 +3351,42 @@ public partial class tbTransaction : INotifyPropertyChanging, INotifyPropertyCha
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
+	}
+	
+	private void attach_tbBills(tbBill entity)
+	{
+		this.SendPropertyChanging();
+		entity.tbUser = this;
+	}
+	
+	private void detach_tbBills(tbBill entity)
+	{
+		this.SendPropertyChanging();
+		entity.tbUser = null;
+	}
+	
+	private void attach_tbTempTransactionAdmins(tbTempTransactionAdmin entity)
+	{
+		this.SendPropertyChanging();
+		entity.tbUser = this;
+	}
+	
+	private void detach_tbTempTransactionAdmins(tbTempTransactionAdmin entity)
+	{
+		this.SendPropertyChanging();
+		entity.tbUser = null;
+	}
+	
+	private void attach_tbTempTransactionCustomers(tbTempTransactionCustomer entity)
+	{
+		this.SendPropertyChanging();
+		entity.tbUser = this;
+	}
+	
+	private void detach_tbTempTransactionCustomers(tbTempTransactionCustomer entity)
+	{
+		this.SendPropertyChanging();
+		entity.tbUser = null;
 	}
 }
 #pragma warning restore 1591

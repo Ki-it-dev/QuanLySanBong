@@ -78,6 +78,6 @@ public partial class web_module_module_XacNhanDatSan : System.Web.UI.Page
 
         db.SubmitChanges();
 
-        Response.Redirect("/trang-chu");
+        Response.Redirect("/quan-ly-dat-san-ca-nhan");
     }
 }

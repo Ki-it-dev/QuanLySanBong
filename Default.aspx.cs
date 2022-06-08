@@ -127,6 +127,7 @@ public partial class TrangChu : System.Web.UI.Page
                            && tb.users_password == pass
                            && tb.users_status == true
                            select tb;
+
         if (viewUserName.Count() > 0)
         {
             tbUser list = viewUserName.Single();
