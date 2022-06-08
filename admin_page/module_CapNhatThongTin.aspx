@@ -90,7 +90,7 @@
                         <div class="p-2">
                             <div class="d-flex flex-row-reverse">
                                 <div class="p-2">
-                                    <button class="btn btn-secondary" id="btnChinhSua" runat="server" onserverclick="btnChinhSua_ServerClick" style="font-size: 1rem; border-radius: 20px;"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button class="btn btn-success" id="btnChinhSua" runat="server" onserverclick="btnChinhSua_ServerClick" style="font-size: 1rem; border-radius: 20px;"><i class="fa-solid fa-check"></i></button>
                                 </div>
                             </div>
                         </div>

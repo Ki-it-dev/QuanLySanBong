@@ -45,10 +45,10 @@
                                             <td><%#Eval("users_address") %></td>
                                             <td><%#Eval("users_status")%></td>
                                             <td>
-                                                <a class="btn btn-primary" onclick="btnXoa('<%#Eval("users_id")%>')">Xóa</a>
+                                                <a class="btn btn-secondary" onclick="btnSua('<%#Eval("users_id")%>')"><i class="fa-solid fa-pen-to-square"></i></a>
                                             </td>
                                             <td>
-                                                <a class="btn btn-primary" onclick="btnSua('<%#Eval("users_id")%>')">Cập nhật</a>
+                                                <a class="btn btn-danger" onclick="btnXoa('<%#Eval("users_id")%>')"><i class="fa-solid fa-xmark"></i></a>
                                             </td>
                                         </tr>
                                     </ItemTemplate>
