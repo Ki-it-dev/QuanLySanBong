@@ -15,9 +15,8 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <div class="container-fluid">
         <div id="index">
-            <div class="khoangcach">
+        <div class="container-fluid" style="padding-top: 8%;">
                 <div class="d-flex justify-content-end">
                     <div id="login-form" style="<%=none%>">
                         <!-- Pills navs -->

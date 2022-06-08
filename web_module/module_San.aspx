@@ -9,10 +9,26 @@
     <link href="../css/cssModule/qlttcn.css" rel="stylesheet" type="text/css">
     <link href="../css/cssModule/xndsc.css" rel="stylesheet" type="text/css">
     <link href="../css/cssModule/qldsc.css" rel="stylesheet" type="text/css">
+
+     <style>
+        .sanDaDat {
+            background: red !important;
+            color: #fff !important;
+            font-weight: 600;
+            pointer-events: none;
+        }
+        .sanCho {
+            background: yellow !important;
+            color: #000 !important;
+            font-weight: 600;
+            /*pointer-events: none;*/
+        }
+    </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <div id="san3">
-        <div class="container-fluid">
+            <div id="san3">
+    <div class="container-fluid" style="padding-top: 8%;">
             <div class="container">
                 <div class="row">
                     <asp:Repeater runat="server" ID="rpDanhSachSan" OnItemDataBound="rpDanhSachSan_ItemDataBound">
@@ -25,7 +41,7 @@
                                         <div class="listBookTimes_<%#Eval("field_id") %> row">
                                             <asp:Repeater runat="server" ID="rpKhungGio">
                                                 <ItemTemplate>
-                                                    <div class="col-3 mb-3 ">
+                                                    <div class="col-lg-3 col-md-1  col-sm-1 mb-3 ">
                                                         <a href="#" class="btn btn-primary cursor-poiter" style="min-width: 120px;"
                                                             id="btnSan_<%#Eval("book_time_id") %>_<%#Eval("field_id") %>"
                                                             onclick="btnTimes('<%#Eval("book_time_id") %>','<%#Eval("field_id") %>')"><%#Eval("book_time_detail") %></a>
@@ -61,20 +77,7 @@
         </div>
     </div>
 
-    <style>
-        .sanDaDat {
-            background: red !important;
-            color: #fff !important;
-            font-weight: 600;
-            pointer-events: none;
-        }
-        .sanCho {
-            background: yellow !important;
-            color: #000 !important;
-            font-weight: 600;
-            /*pointer-events: none;*/
-        }
-    </style>
+   
 
     <script>
 

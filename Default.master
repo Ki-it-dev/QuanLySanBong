@@ -79,10 +79,10 @@
             background-color: #3e8e41;
         }
     </style>
-
+        <div class="container-fluid">
     <form id="form1" runat="server">
         <div class="header">
-            <nav id="navbar-example2" class="navbar  fixed-top navbar-expand-lg navbar-dark bg-dark  bg-company-red ">
+            <nav id="navbar-example2" class="navbar  fixed-top navbar-expand-lg navbar-dark bg-dark  bg-company-red  col-lg-12 col-md-6 col-sm-4">
                 <a class="navbar-brand" href="#index">
                     <img src="../../images/SanBong/TrangChu/lo.png" width="70" height="70" alt="">
                 </a>
@@ -101,7 +101,7 @@
                             <a class="nav-link" style="<%=txtNone%>;<%=styleNone%>" href="/quan-ly-dat-san-chung">Quản lý đặt sân chung</a>
                         </li>
                     </ul>
-                    <input class="form-control mr-sm-2" type="search" style="width: 500px;" id="txtTimKiem" runat="server" 
+                    <input class="form-control mr-sm-2 col-lg-4" type="search"  id="txtTimKiem" runat="server" 
                         placeholder="Nhập sân hoặc sản phẩm bất kỳ..." aria-label="search">
                     <button class="btn btn-outline-success my-2 my-sm-0" id="btnTimKiem" runat="server" onserverclick="btnTimKiem_ServerClick" type="submit">Tìm Kiếm</button>
 
@@ -148,5 +148,7 @@
             </nav>
         </div>
     </form>
+        </div>
+
 </body>
 </html>

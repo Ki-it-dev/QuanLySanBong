@@ -9,19 +9,26 @@
     <link href="../css/cssModule/qlttcn.css" rel="stylesheet" type="text/css">
     <link href="../css/cssModule/xndsc.css" rel="stylesheet" type="text/css">
     <link href="../css/cssModule/qldsc.css" rel="stylesheet" type="text/css">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div id="sanpham">
-            <div class="khoangcach">
-                <h1>Sản Phẩm</h1>
-                <div class="dropdown" style="margin-top: 30px;">
+        <div class="container-fluid" style="padding-top: 8%;">
+                <div class="d-flex justify-content-between">
+                 <div class="d-flex align-items-start">
+                     <h1>Sản Phẩm</h1>
+                 </div>
 
-                    <asp:DropDownList ID="ddlSanPham" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSanPham_SelectedIndexChanged">
-                        <asp:ListItem>Tất cả sản phẩm</asp:ListItem>
+                 <div class="d-flex align-items-end">
+                        <asp:DropDownList ID="ddlSanPham" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSanPham_SelectedIndexChanged" class="dropdown">
+                        <asp:ListItem>Tất cả</asp:ListItem>
                         <asp:ListItem>Nước giải khát</asp:ListItem>
                         <asp:ListItem>Áo quần</asp:ListItem>
                         <asp:ListItem>Giày dép</asp:ListItem>
                     </asp:DropDownList>
+                 </div>
+            
+                    
 
                 </div>
                 <div class="card-deck">
@@ -29,7 +36,7 @@
                         <div class="row">
                             <asp:Repeater runat="server" ID="rpQuanAo">
                                 <ItemTemplate>
-                                    <div class="col-lg-2 mb-3">
+                                    <div class="col-lg-2 col-md-1 col-sm-1 mb-3">
                                         <div class="card">
                                             <img class="card-img-top" src="<%#Eval("picture")%>" alt="Card image cap">
                                             <div class="card-body">

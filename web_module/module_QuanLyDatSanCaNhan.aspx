@@ -38,11 +38,11 @@
             </div>
         </div>
     </div>
-
     <a href="#" id="btnHuy" runat="server" onserverclick="btnHuy_ServerClick"></a>
+    <div style="display:none;">
     <input type="text" name="name" value="" id="txtIdSan" runat="server"/>
     <input type="text" name="name" value="" id="txtIdGio" runat="server"/>
-
+</div>
 
     <script>
         function myBtnHuy(idSan, idGio) {
