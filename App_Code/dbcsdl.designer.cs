@@ -71,7 +71,7 @@ public partial class dbcsdlDataContext : System.Data.Linq.DataContext
   #endregion
 	
 	public dbcsdlDataContext() : 
-			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["dbQLSBConnectionString3"].ConnectionString, mappingSource)
+			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["dbQLSBConnectionString1"].ConnectionString, mappingSource)
 	{
 		OnCreated();
 	}
