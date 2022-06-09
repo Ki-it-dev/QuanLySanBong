@@ -37,7 +37,7 @@
                                             <td><%#Eval("field_name") %></td>
                                             <td><%#Eval("users_account") %></td>
                                             <td><%#Eval("book_time_detail") %></td>
-                                            <td><%#Eval("price") %></td>
+                                            <td><%#Eval("price","{0:0,00}") %> VNĐ</td>
                                             <td><%#Eval("transaction_datetime") %></td>
                                             <td><%#Eval("transaction_status")%></td>
                                         </tr>

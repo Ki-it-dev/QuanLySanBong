@@ -17,7 +17,7 @@ public partial class web_module_module_XacNhanDatSan : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            if(Context.Items["_idSan"] == null && Context.Items["_idGio"] == null)
+            if (Context.Items["_idSan"] == null && Context.Items["_idGio"] == null)
             {
                 Response.Redirect("/trang-chu");
             }
@@ -60,31 +60,44 @@ public partial class web_module_module_XacNhanDatSan : System.Web.UI.Page
 
     protected void btnReturn_ServerClick(object sender, EventArgs e)
     {
-        Response.Redirect("/trang-chu");
+        Response.Redirect("/danh-sach-san");
     }
 
     protected void btnXacNhan_ServerClick(object sender, EventArgs e)
     {
         var getUser = from u in db.tbUsers where u.users_account == Request.Cookies["UserName"].Value select u;
 
-        tbTempTransactionAdmin insertAdm = new tbTempTransactionAdmin();
-        tbTempTransactionCustomer insertCus = new tbTempTransactionCustomer();
+        var getBookTime = from bt in db.tbBookTimes
+                          where bt.book_time_id == Convert.ToInt32(txtIdGio.Value)
+                          select bt;
 
-        insertAdm.book_time_id = Convert.ToInt32(txtIdGio.Value);
-        insertAdm.field_id = Convert.ToInt32(txtIdSan.Value);
-        insertAdm.users_id = getUser.FirstOrDefault().users_id;
+        string timeQua = string.Join(",", getBookTime.Select(x => x.book_time_detail.Substring(0, 2)));
 
-        insertCus.book_time_id = Convert.ToInt32(txtIdGio.Value);
-        insertCus.field_id = Convert.ToInt32(txtIdSan.Value);
-        insertCus.users_id = getUser.FirstOrDefault().users_id;
+        if (Convert.ToInt32(timeQua) < DateTime.Now.Hour)
+        {
+            Response.Redirect("/danh-sach-san");
+        }
+        else
+        {
+            tbTempTransactionAdmin insertAdm = new tbTempTransactionAdmin();
+            tbTempTransactionCustomer insertCus = new tbTempTransactionCustomer();
 
-        db.tbTempTransactionAdmins.InsertOnSubmit(insertAdm);
-        db.tbTempTransactionCustomers.InsertOnSubmit(insertCus);
+            insertAdm.book_time_id = Convert.ToInt32(txtIdGio.Value);
+            insertAdm.field_id = Convert.ToInt32(txtIdSan.Value);
+            insertAdm.users_id = getUser.FirstOrDefault().users_id;
 
-        alert.alert_Success(Page, "Xác nhận thành công vui lòng chờ nhân viên xác nhận", "");
+            insertCus.book_time_id = Convert.ToInt32(txtIdGio.Value);
+            insertCus.field_id = Convert.ToInt32(txtIdSan.Value);
+            insertCus.users_id = getUser.FirstOrDefault().users_id;
 
-        db.SubmitChanges();
+            db.tbTempTransactionAdmins.InsertOnSubmit(insertAdm);
+            db.tbTempTransactionCustomers.InsertOnSubmit(insertCus);
 
-        Response.Redirect("/quan-ly-dat-san-ca-nhan");
+            alert.alert_Success(Page, "Xác nhận thành công vui lòng chờ nhân viên xác nhận", "");
+
+            db.SubmitChanges();
+
+            Response.Redirect("/quan-ly-dat-san-ca-nhan");
+        }
     }
 }

@@ -64,10 +64,10 @@ public partial class web_module_module_ChinhSuaThongTinCaNhan : System.Web.UI.Pa
         string[] arrCMND = txtCheckCMND.Value.Split(',');
 
         txtCheckAccount.Value = string.Join(",", getAccount.Select(x => x.users_account));
-        string[] arrAcc = txtCheckCMND.Value.Split(',');
+        string[] arrAcc = txtCheckAccount.Value.Split(',');
 
         txtCheckPhone.Value = string.Join(",", getAccount.Select(x => x.users_phoneNumber));
-        string[] arrPhone = txtCheckCMND.Value.Split(',');
+        string[] arrPhone = txtCheckPhone.Value.Split(',');
 
         if (txtTaiKhoan.Value == "" ||
             txtEmail.Value == "" ||

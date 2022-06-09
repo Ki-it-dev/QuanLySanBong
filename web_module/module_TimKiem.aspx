@@ -12,7 +12,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div style="<%=styleNone%>">
-        <h1 style="color: greenyellow;padding-top: 25%; text-align:center;">Không tìm thấy dữ liệu</h1>
+        <div id="xn">
+                <h1 style="color: greenyellow;padding-top: 25%; text-align:center;">Không tìm thấy dữ liệu</h1>
+            <div style="padding:10%"></div>
+        </div>
     </div>
 
     <div id="sanpham" style="<%=noneSp%>">
@@ -123,6 +126,7 @@
     <div id="san3" style="<%=noneSan%>">
         <div class="container-fluid" style="padding-top: 8%;">
             <div class="container">
+                <h1><%=txtDateTImeNow %></h1>
                 <div class="row">
                     <asp:Repeater runat="server" ID="rpDanhSachSan" OnItemDataBound="rpDanhSachSan_ItemDataBound">
                         <ItemTemplate>
@@ -135,7 +139,7 @@
                                             <asp:Repeater runat="server" ID="rpKhungGio">
                                                 <ItemTemplate>
                                                     <div class="col-lg-3 col-md-1  col-sm-1 mb-3 ">
-                                                        <a href="#" class="btn btn-primary cursor-poiter" style="min-width: 120px;"
+                                                        <a href="#" class="btn btn-primary cursor-poiter" style='min-width: 120px;<%#Eval("style")%>'
                                                             id="btnSan_<%#Eval("book_time_id") %>_<%#Eval("field_id") %>"
                                                             onclick="btnTimes('<%#Eval("book_time_id") %>','<%#Eval("field_id") %>')"><%#Eval("book_time_detail") %></a>
                                                     </div>

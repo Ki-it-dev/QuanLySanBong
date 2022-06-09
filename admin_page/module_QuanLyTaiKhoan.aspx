@@ -22,8 +22,8 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Phân quyền</th>
+                                    <th scope="col">Họ và tên</th>
                                     <th scope="col">Tên tài khoản</th>
-                                    <th scope="col">Mật khẩu</th>
                                     <th scope="col">Số điện thoại</th>
                                     <th scope="col">CMND</th>
                                     <th scope="col">Địa chỉ</th>

@@ -71,10 +71,10 @@ public partial class admin_page_module_CapNhatThongTin : System.Web.UI.Page
         string[] arrCMND = txtCheckCMND.Value.Split(',');
 
         txtCheckAccount.Value = string.Join(",", getAccount.Select(x => x.users_account));
-        string[] arrAcc = txtCheckCMND.Value.Split(',');
+        string[] arrAcc = txtCheckAccount.Value.Split(',');
 
         txtCheckPhone.Value = string.Join(",", getAccount.Select(x => x.users_phoneNumber));
-        string[] arrPhone = txtCheckCMND.Value.Split(',');
+        string[] arrPhone = txtCheckPhone.Value.Split(',');
 
         if (txtTaiKhoan.Value == "" ||
             txtEmail.Value == "" ||

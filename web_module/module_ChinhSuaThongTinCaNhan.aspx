@@ -25,28 +25,44 @@
                                 <div class="p-2">
                                     <div class="d-flex flex-column">
                                         <div class="p-2">
-                                            <p>Email:
-                                                <input type="text" name="name" id="txtEmail"  runat="server"/></p>
+                                            <p>
+                                                Email:
+                                                <input type="email" name="name" id="txtEmail" runat="server" />
+                                            </p>
+                                            <asp:RegularExpressionValidator ID="validateEmail"
+                                                runat="server" ErrorMessage="Invalid email." ForeColor="red"
+                                                ControlToValidate="txtEmail"
+                                                ValidationExpression="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" />
                                         </div>
                                         <div class="p-2">
-                                            <p>Tên tài khoản :
-                                                <input type="text" name="name" id="txtTaiKhoan" readonly runat="server"/></p>
+                                            <p>
+                                                Tên tài khoản :
+                                                <input type="text" name="name" id="txtTaiKhoan" readonly runat="server" />
+                                            </p>
                                         </div>
                                         <div class="p-2">
-                                            <p>CMND/CCCD :
-                                                <input type="text" name="name" id="txtCMND" runat="server"/></p>
+                                            <p>
+                                                CMND/CCCD :
+                                                <input type="text" name="name" id="txtCMND" runat="server" />
+                                            </p>
                                         </div>
                                         <div class="p-2">
-                                            <p>Họ và Tên:
-                                                <input type="text" name="name" id="txtTen" runat="server"/></p>
+                                            <p>
+                                                Họ và Tên:
+                                                <input type="text" name="name" id="txtTen" runat="server" />
+                                            </p>
                                         </div>
                                         <div class="p-2">
-                                            <p>Số điện thoại:
-                                                <input type="text" name="name" id="txtPhone" runat="server"/></p>
+                                            <p>
+                                                Số điện thoại:
+                                                <input type="text" name="name" id="txtPhone" runat="server" />
+                                            </p>
                                         </div>
                                         <div class="p-2">
-                                            <p>Địa chỉ :
-                                                <input type="text" name="name" id="txtDiaChi" runat="server"/></p>
+                                            <p>
+                                                Địa chỉ :
+                                                <input type="text" name="name" id="txtDiaChi" runat="server" />
+                                            </p>
                                         </div>
                                         <div class="p-2">
                                             <p>Trạng thái  : <%=users_status%></p>

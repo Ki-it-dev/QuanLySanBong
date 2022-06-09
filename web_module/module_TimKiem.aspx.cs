@@ -119,7 +119,7 @@ public partial class web_module_module_TimKiem : System.Web.UI.Page
                            join s in db.tbFields on p.field_type_id equals s.field_type_id
                            join tta in db.tbTempTransactionAdmins on s.field_id equals tta.field_id
                            join st in db.tbTransactions on tta.temp_transaction_id equals st.temp_transaction_id
-                           where st.transaction_status == 1
+                           where st.transaction_status == 1 && st.transaction_datetime.Value.Day == DateTime.Now.Day
                            select new
                            {
                                tta.book_time_id,
@@ -135,7 +135,7 @@ public partial class web_module_module_TimKiem : System.Web.UI.Page
                                join s in db.tbFields on p.field_type_id equals s.field_type_id
                                join tta in db.tbTempTransactionAdmins on s.field_id equals tta.field_id
                                join st in db.tbTransactions on tta.temp_transaction_id equals st.temp_transaction_id
-                               where st.transaction_status == 0
+                               where st.transaction_status == 0 && st.transaction_datetime.Value.Day == DateTime.Now.Day
                                select new
                                {
                                    tta.book_time_id,
@@ -159,6 +159,7 @@ public partial class web_module_module_TimKiem : System.Web.UI.Page
                        tta.field_id == Convert.ToInt32(txtIdSan.Value)
                        && tta.book_time_id == Convert.ToInt32(txtIdGio.Value)
                        && t.transaction_status == 0
+                       && t.transaction_datetime.Value.Day == DateTime.Now.Day
                        select new
                        {
                            tta.field_id,
@@ -193,6 +194,7 @@ public partial class web_module_module_TimKiem : System.Web.UI.Page
                               bt.book_time_id,
                               bt.book_time_detail,
                               field_id = field_id,
+                              style = Convert.ToInt32(bt.book_time_detail.Substring(0, 2)) < DateTime.Now.Hour ? "pointer-events: none;background:aqua" : "",
                           };
         rpKhungGio.DataSource = getBookTime;
         rpKhungGio.DataBind();

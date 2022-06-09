@@ -50,10 +50,10 @@ public partial class TrangChu : System.Web.UI.Page
         string[] arrCMND = txtCheckCMND.Value.Split(',');
 
         txtCheckAccount.Value = string.Join(",", getAccount.Select(x => x.users_account));
-        string[] arrAcc = txtCheckCMND.Value.Split(',');
+        string[] arrAcc = txtCheckAccount.Value.Split(',');
 
         txtCheckPhone.Value = string.Join(",", getAccount.Select(x => x.users_phoneNumber));
-        string[] arrPhone = txtCheckCMND.Value.Split(',');
+        string[] arrPhone = txtCheckPhone.Value.Split(',');
 
         if (registerUsername.Value == "" || registerRepeatPassword.Value == "" ||
             registerPassword.Value == "" || registerEmail.Value == "" ||

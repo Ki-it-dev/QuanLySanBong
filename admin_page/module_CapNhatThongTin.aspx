@@ -27,8 +27,12 @@
                                         <div class="p-2">
                                             <p>
                                                 Email:
-                                                <input type="text" name="name" id="txtEmail" runat="server" />
+                                                <input type="email" name="name" id="txtEmail" runat="server" />
                                             </p>
+                                            <asp:RegularExpressionValidator ID="validateEmail"
+                                                runat="server" ErrorMessage="Invalid email." ForeColor="red"
+                                                ControlToValidate="txtEmail"
+                                                ValidationExpression="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" />
                                         </div>
                                         <div class="p-2">
                                             <p>
