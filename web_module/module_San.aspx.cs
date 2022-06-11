@@ -9,15 +9,13 @@ public partial class web_module_module_San : System.Web.UI.Page
 {
     dbcsdlDataContext db = new dbcsdlDataContext();
     cls_Alert alert = new cls_Alert();
-
-    protected string txtDateTime;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             loadData();
         }
-        txtDateTime = DateTime.Now.ToString("dd/MM/yyyy");
+        dteNgayBatDau.Value = DateTime.Now.ToString("yyyy-MM-dd").Replace(' ', 'T'); ;
     }
     protected void loadData()
     {
@@ -41,7 +39,10 @@ public partial class web_module_module_San : System.Web.UI.Page
                            join s in db.tbFields on p.field_type_id equals s.field_type_id
                            join tta in db.tbTempTransactionAdmins on s.field_id equals tta.field_id
                            join st in db.tbTransactions on tta.temp_transaction_id equals st.temp_transaction_id
-                           where st.transaction_status == 1 && st.transaction_datetime.Value.Day == DateTime.Now.Day
+                           where st.transaction_status == 1
+                           && st.transaction_datetime.Value.Day == DateTime.Now.Day
+                           && st.transaction_datetime.Value.Month == DateTime.Now.Month
+                           && st.transaction_datetime.Value.Year == DateTime.Now.Year
                            select new
                            {
                                tta.book_time_id,
@@ -57,7 +58,10 @@ public partial class web_module_module_San : System.Web.UI.Page
                                join s in db.tbFields on p.field_type_id equals s.field_type_id
                                join tta in db.tbTempTransactionAdmins on s.field_id equals tta.field_id
                                join st in db.tbTransactions on tta.temp_transaction_id equals st.temp_transaction_id
-                               where st.transaction_status == 0 && st.transaction_datetime.Value.Day == DateTime.Now.Day
+                               where st.transaction_status == 0
+                               && st.transaction_datetime.Value.Day == DateTime.Now.Day
+                               && st.transaction_datetime.Value.Month == DateTime.Now.Month
+                               && st.transaction_datetime.Value.Year == DateTime.Now.Year
                                select new
                                {
                                    tta.book_time_id,
@@ -82,6 +86,8 @@ public partial class web_module_module_San : System.Web.UI.Page
                        && tta.book_time_id == Convert.ToInt32(txtIdGio.Value)
                        && t.transaction_status == 0
                        && t.transaction_datetime.Value.Day == DateTime.Now.Day
+                       && t.transaction_datetime.Value.Month == DateTime.Now.Month
+                       && t.transaction_datetime.Value.Year == DateTime.Now.Year
                        select new
                        {
                            tta.field_id,
@@ -117,9 +123,16 @@ public partial class web_module_module_San : System.Web.UI.Page
                               bt.book_time_id,
                               bt.book_time_detail,
                               field_id = field_id,
-                              style = Convert.ToInt32(bt.book_time_detail.Substring(0, 2)) < DateTime.Now.Hour? "pointer-events: none;background:aqua" : "",
+                              style = Convert.ToInt32(bt.book_time_detail.Substring(0, 2)) < DateTime.Now.Hour ? "pointer-events: none;background:aqua" : "",
                           };
         rpKhungGio.DataSource = getBookTime;
         rpKhungGio.DataBind();
+    }
+
+    protected void btnDatSan_ServerClick(object sender, EventArgs e)
+    {
+        string time = txtTimeDatTruoc.Value;
+        Context.Items["time"] = time;
+        Server.Transfer("web_module/module_DatTruoc.aspx");
     }
 }

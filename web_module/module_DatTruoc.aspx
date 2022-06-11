@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="module_San.aspx.cs" Inherits="web_module_module_San" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="module_DatTruoc.aspx.cs" Inherits="web_module_module_DatTruoc" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link href="../css/cssModule/index.css" rel="stylesheet" type="text/css" />
     <link href="../css/cssModule/san.css" rel="stylesheet" type="text/css">
     <link href="../css/cssModule/sanpham.css" rel="stylesheet" type="text/css">
@@ -10,7 +10,7 @@
     <link href="../css/cssModule/xndsc.css" rel="stylesheet" type="text/css">
     <link href="../css/cssModule/qldsc.css" rel="stylesheet" type="text/css">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div id="san3">
         <div class="container-fluid" style="padding-top: 8%;">
             <div class="container">
@@ -29,7 +29,7 @@
                                             <asp:Repeater runat="server" ID="rpKhungGio">
                                                 <ItemTemplate>
                                                     <div class="col-lg-3 col-md-1  col-sm-1 mb-3 ">
-                                                        <a href="#" class="btn btn-primary cursor-poiter" style='min-width: 120px; <%#Eval("style")%>'
+                                                        <a href="#" class="btn btn-primary cursor-poiter" style='min-width: 120px;'
                                                             id="btnSan_<%#Eval("book_time_id") %>_<%#Eval("field_id") %>"
                                                             onclick="btnTimes('<%#Eval("book_time_id") %>','<%#Eval("field_id") %>')"><%#Eval("book_time_detail") %></a>
                                                     </div>
@@ -133,6 +133,5 @@
         })
 
     </script>
-
 </asp:Content>
 
