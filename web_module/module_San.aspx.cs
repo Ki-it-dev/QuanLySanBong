@@ -75,6 +75,7 @@ public partial class web_module_module_San : System.Web.UI.Page
     {
         string _idSan = txtIdSan.Value;
         string _idGio = txtIdGio.Value;
+        string _idTime = dteNgayBatDau.Value;
 
         var getData = (from p in db.tbPrices
                        join bt in db.tbBookTimes on p.book_time_id equals bt.book_time_id
@@ -108,6 +109,7 @@ public partial class web_module_module_San : System.Web.UI.Page
             {
                 Context.Items["_idSan"] = _idSan;
                 Context.Items["_idGio"] = _idGio;
+                Context.Items["_idTime"] = _idTime;
                 Server.Transfer("web_module/module_XacNhanDatSan.aspx");
             }
         }

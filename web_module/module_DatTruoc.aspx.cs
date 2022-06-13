@@ -53,6 +53,7 @@ public partial class web_module_module_DatTruoc : System.Web.UI.Page
     {
         string _idSan = txtIdSan.Value;
         string _idGio = txtIdGio.Value;
+        string _idTime = dteNgayBatDau.Value;
 
         var getData = (from p in db.tbPrices
                        join bt in db.tbBookTimes on p.book_time_id equals bt.book_time_id
@@ -84,6 +85,7 @@ public partial class web_module_module_DatTruoc : System.Web.UI.Page
             {
                 Context.Items["_idSan"] = _idSan;
                 Context.Items["_idGio"] = _idGio;
+                Context.Items["_idTime"] = _idTime;
                 Server.Transfer("module_XacNhanDatSan.aspx");
             }
         }
@@ -111,15 +113,15 @@ public partial class web_module_module_DatTruoc : System.Web.UI.Page
                            join tta in db.tbTempTransactionAdmins on s.field_id equals tta.field_id
                            join st in db.tbTransactions on tta.temp_transaction_id equals st.temp_transaction_id
                            where st.transaction_status == 1 
-                           && st.transaction_datetime.Value.ToString("yyyy-MM-dd").Replace(' ', 'T') == dteNgayBatDau.Value
+                           && st.transaction_datetime == Convert.ToDateTime(dteNgayBatDau.Value)
                            select new
                            {
                                tta.book_time_id,
                                tta.field_id,
                            });
 
-        //txtIdSanDaDat.Value = string.Join(",", getTimeBook.Select(x => x.field_id));
-        //txtIdTimeDaDat.Value = string.Join(",", getTimeBook.Select(x => x.book_time_id));
+        txtIdSanDaDat.Value = string.Join(",", getTimeBook.Select(x => x.field_id));
+        txtIdTimeDaDat.Value = string.Join(",", getTimeBook.Select(x => x.book_time_id));
 
         //Khach da dat san nhung cho nhan vien xac nhan
         var getTimeBookWait = (from p in db.tbPrices
@@ -128,20 +130,27 @@ public partial class web_module_module_DatTruoc : System.Web.UI.Page
                                join tta in db.tbTempTransactionAdmins on s.field_id equals tta.field_id
                                join st in db.tbTransactions on tta.temp_transaction_id equals st.temp_transaction_id
                                where st.transaction_status == 0 /*&& st.transaction_datetime.Value.Day == DateTime.Now.Day*/
-                               && st.transaction_datetime.Value.ToString("yyyy-MM-dd").Replace(' ', 'T') == dteNgayBatDau.Value
+                               && st.transaction_datetime == Convert.ToDateTime(dteNgayBatDau.Value)
                                select new
                                {
                                    tta.book_time_id,
                                    tta.field_id,
                                });
 
-        //txtIdSanCho.Value = string.Join(",", getTimeBookWait.Select(x => x.field_id));
-        //txtIdTimeCho.Value = string.Join(",", getTimeBookWait.Select(x => x.book_time_id));
+        txtIdSanCho.Value = string.Join(",", getTimeBookWait.Select(x => x.field_id));
+        txtIdTimeCho.Value = string.Join(",", getTimeBookWait.Select(x => x.book_time_id));
     }
     protected void btnDatSan_ServerClick(object sender, EventArgs e)
     {
-        //string time = txtTimeDatTruoc.Value;
-        //Context.Items["time"] = time;
-        //Server.Transfer("web_module/module_San.aspx");
+        string time = txtTimeDatTruoc.Value;
+
+        if (time == DateTime.Now.ToString("yyyy-MM-dd").Replace(' ', 'T'))
+        {
+            Response.Redirect("/danh-sach-san");
+        }
+        else
+        {
+            loadData();
+        }
     }
 }

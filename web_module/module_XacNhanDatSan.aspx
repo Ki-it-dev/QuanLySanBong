@@ -63,6 +63,7 @@
 
             <input type="text" id="txtIdSan" runat="server" name="name" value="" hidden />
             <input type="text" id="txtIdGio" runat="server" name="name" value="" hidden />
+            <input type="text" id="txtTime" runat="server" name="name" value="" hidden />
 
         </div>
         <div style="padding:8%;"></div>

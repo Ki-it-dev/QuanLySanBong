@@ -47,9 +47,19 @@
 
     <script>
         function myBtnHuy(idSan, idGio) {
-            document.getElementById("<%=txtIdSan.ClientID%>").value = idSan
-            document.getElementById("<%=txtIdGio.ClientID%>").value = idGio
-            document.getElementById("<%=btnHuy.ClientID%>").click()
+            swal("Bạn có thực sự muốn hủy?",
+                "Nếu hủy, dữ liệu sẽ không thể khôi phục.",
+                "warning",
+                {
+                    buttons: true,
+                    dangerMode: true
+                }).then(function (value) {
+                    if (value == true) {
+                        document.getElementById("<%=txtIdSan.ClientID%>").value = idSan
+                        document.getElementById("<%=txtIdGio.ClientID%>").value = idGio
+                        document.getElementById("<%=btnHuy.ClientID%>").click()
+                    }
+                });
         }
     </script>
 

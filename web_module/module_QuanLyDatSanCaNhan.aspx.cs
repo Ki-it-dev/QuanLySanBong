@@ -36,7 +36,7 @@ public partial class web_module_module_QuanLyDatSanCaNhan : System.Web.UI.Page
                        where ds.users_id == getUser.FirstOrDefault().users_id
                        select new
                        {
-                           t.transaction_datetime,
+                           transaction_datetime = DateTime.Parse(t.transaction_datetime.ToString()).ToString("yyyy-MM-dd"),
                            f.field_name,
                            bt.book_time_detail,
 
